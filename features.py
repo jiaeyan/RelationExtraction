@@ -26,5 +26,8 @@ class MentionPair:
     def get_features(self):
         features = {}
         features["comb_entity"] = self.mention1.entity + "-" + self.mention2.entity
+        features["pos1"] = self.mention1.pos
+        features["pos2"] = self.mention2.pos
+        features["comb_pos"] = self.mention1.pos + "-" + self.mention2.pos
 
         return features
