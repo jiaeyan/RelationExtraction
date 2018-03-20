@@ -47,7 +47,6 @@ for i in range(len(gold_tag_list)):
     if gold_tag_list[i] != 'no_rel' and gold_tag_list[i] == test_tag_list[i]:
         correct += 1
 
-print("test:", test_total, "gold:", gold_total, "correct", correct)
 precision = float(correct) / test_total
 recall = float(correct) / gold_total
 f = precision * recall * 2 / (precision + recall)
