@@ -13,7 +13,9 @@ def generate_feature_file(pairs, out_f, train=True):
 def main():
     parser = argparse.ArgumentParser(description='Run relation extraction')
     parser.add_argument('--gold', type=str, help='the input gold file to generate train feature file')
-    parser.add_argument('--train', type=bool, default=False, help='decide if this procedure is train or not')
+    parser.set_defaults(train=True)
+    parser.add_argument('--train', dest='train', action='store_true', help='decide if this procedure is train')
+    parser.add_argument('--test', dest='train', action='store_false', help='decide if this procedure is test')
     args = parser.parse_args()
 
     if args.train:
