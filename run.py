@@ -2,13 +2,13 @@ from data_prep import get_pairs
 import argparse
 
 
-
 def generate_feature_file(pairs, out_f, train=True):
     with open(out_f, "w") as f:
         for pair in pairs:
             line = pair.rel+" " if train else ""
             line += " ".join(["{}={}".format(k, v) for k, v in pair.features.items()]) + "\n"
             f.write(line)
+
 
 def main():
     parser = argparse.ArgumentParser(description='Run relation extraction')
@@ -19,14 +19,12 @@ def main():
     args = parser.parse_args()
 
     if args.train:
+        print("Generating training file...")
         pairs = get_pairs("data/rel-trainset.gold")
-    else:
-        pairs = get_pairs("data/rel-testset.gold")
-    if args.train:
-        print("yes trianing")
         generate_feature_file(pairs, "train.txt", train=args.train)
     else:
-        print("yes testing")
+        print("Generating testing file...")
+        pairs = get_pairs("data/rel-testset.gold")
         generate_feature_file(pairs, "test.txt", train=args.train)
 
 
