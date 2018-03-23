@@ -1,6 +1,6 @@
 import os
 from features import Mention, MentionPair
-
+from nltk import ParentedTree
 
 pos_data = "data/postagged-files"
 parse_data = "data/parsed-files"
@@ -9,7 +9,7 @@ parse_data = "data/parsed-files"
 def get_pairs(data):
     pos_dict = get_pos_dict(pos_data)
     entity_pairs = []
-    # parse_dict = get_parse_dict(parse_data)
+    parse_dict = get_parse_dict(parse_data)
     with open(data, 'r') as f:
         for line in f:
             fields = line.strip().split()
@@ -18,13 +18,20 @@ def get_pairs(data):
 
             span1 = [int(fields[3]), int(fields[4])]
             pos1 = "_".join(pos_dict[fn][sent_id][span1[0]: span1[1]])
-            mention1 = Mention(fields[7], fields[5], pos1, span1)
+            tree1 = parse_dict[fn][sent_id].treeposition_spanning_leaves(span1[0],span1[1])
+            tree1 = parse_dict[fn][sent_id][tree1]
+            mention1 = Mention(fields[7], fields[5], pos1, span1, tree1)
 
             span2 = [int(fields[9]), int(fields[10])]
             pos2 = "_".join(pos_dict[fn][sent_id][span2[0]: span2[1]])
-            mention2 = Mention(fields[13], fields[11], pos2, span2)
+            tree2 = parse_dict[fn][sent_id].treeposition_spanning_leaves(span2[0],span2[1])
+            tree2 = parse_dict[fn][sent_id][tree2]
+            mention2 = Mention(fields[13], fields[11], pos2, span2, tree2)
 
-            entity_pairs.append(MentionPair(mention1, mention2, fields[0]))
+            tree = parse_dict[fn][sent_id].treeposition_spanning_leaves(span1[0],span2[1])
+            tree = parse_dict[fn][sent_id][tree]
+
+            entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree))
 
     return entity_pairs
 
@@ -45,8 +52,16 @@ def get_pos_dict(pos_data):
 
 
 def get_parse_dict(parse_data):
-    # TODO
-    pass
+    fns = os.listdir(parse_data)
+    parse_dict = {}
+    for fn in fns:
+        parse_dict[fn[:21]] = []
+        with open(os.path.join(parse_data, fn)) as f:
+            for line in f:
+                if line is not "\n":
+                    line = ParentedTree.fromstring(line)
+                    parse_dict[fn[:21]].append(line)
+    return parse_dict
 
 # pos_dict = get_pos_dict(pos_data)
 # print(pos_dict["APW20001001.2021.0521"][3])
