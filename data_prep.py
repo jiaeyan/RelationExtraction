@@ -1,6 +1,8 @@
 import os
 from features import Mention, MentionPair
 from nltk import ParentedTree
+import re
+
 
 pos_data = "data/postagged-files"
 parse_data = "data/parsed-files"
@@ -56,7 +58,7 @@ def get_parse_dict(parse_data):
         parse_dict[fn[:21]] = []
         with open(os.path.join(parse_data, fn)) as f:
             for line in f:
-                if line is not "\n":
+                if not re.findall("^\s",line):
                     line = ParentedTree.fromstring(line)
                     parse_dict[fn[:21]].append(line)
     return parse_dict
