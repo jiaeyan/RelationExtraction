@@ -15,21 +15,19 @@ def get_pairs(data):
             fields = line.strip().split()
             fn = fields[1]
             sent_id = int(fields[2])
+            assert int(fields[2]) == int(fields[8])
 
             span1 = [int(fields[3]), int(fields[4])]
             pos1 = "_".join(pos_dict[fn][sent_id][span1[0]: span1[1]])
-            tree1 = parse_dict[fn][sent_id].treeposition_spanning_leaves(span1[0],span1[1])
-            tree1 = parse_dict[fn][sent_id][tree1]
-            mention1 = Mention(fields[7], fields[5], pos1, span1, tree1)
+            tree_pos1 = parse_dict[fn][sent_id].leaf_treeposition(span1[0])[:-1]
+            mention1 = Mention(fields[7], fields[5], pos1, span1, tree_pos1)
 
             span2 = [int(fields[9]), int(fields[10])]
             pos2 = "_".join(pos_dict[fn][sent_id][span2[0]: span2[1]])
-            tree2 = parse_dict[fn][sent_id].treeposition_spanning_leaves(span2[0],span2[1])
-            tree2 = parse_dict[fn][sent_id][tree2]
-            mention2 = Mention(fields[13], fields[11], pos2, span2, tree2)
+            tree_pos2 = parse_dict[fn][sent_id].leaf_treeposition(span2[0])[:-1]
+            mention2 = Mention(fields[13], fields[11], pos2, span2, tree_pos2)
 
-            tree = parse_dict[fn][sent_id].treeposition_spanning_leaves(span1[0],span2[1])
-            tree = parse_dict[fn][sent_id][tree]
+            tree = parse_dict[fn][sent_id]
 
             entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree))
 
