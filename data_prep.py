@@ -3,9 +3,9 @@ from features import Mention, MentionPair
 from nltk import ParentedTree
 import re
 
-
 pos_data = "data/postagged-files"
 parse_data = "data/parsed-files"
+dep_data = 'data/dep-files'
 
 
 def get_pairs(data):
@@ -21,6 +21,8 @@ def get_pairs(data):
 
             span1 = [int(fields[3]), int(fields[4])]
             pos1 = "_".join(pos_dict[fn][sent_id][span1[0]: span1[1]])
+            # take [:-1] here because leaf_treeposition() just gives the node for the word
+            # we want the pos and word which is one node up
             tree_pos1 = parse_dict[fn][sent_id].leaf_treeposition(span1[0])[:-1]
             mention1 = Mention(fields[7], fields[5], pos1, span1, tree_pos1)
 
@@ -58,18 +60,16 @@ def get_parse_dict(parse_data):
         parse_dict[fn[:21]] = []
         with open(os.path.join(parse_data, fn)) as f:
             for line in f:
-                if not re.findall("^\s",line):
+                if not re.findall("^\s", line):
                     line = ParentedTree.fromstring(line)
                     parse_dict[fn[:21]].append(line)
     return parse_dict
 
-# pos_dict = get_pos_dict(pos_data)
-# print(pos_dict["APW20001001.2021.0521"][3])
 
-# with open("data/rel-trainset.gold", 'r') as f:
-#     for line in f:
-#         fields = line.strip().split()
-#         print(fields)
-
-# pairs = get_pairs("data/rel-trainset.gold")
-# print(pairs[0].mention2.pos)
+def convert_to_dep(parse_data, dep_data):
+    fns = os.listdir(parse_data)
+    os.chdir('stanford-parser')
+    for fn in fns:
+        fn_out = fn[:21]
+        os.system(
+            "java -cp stanford-parser.jar edu.stanford.nlp.trees.ud.UniversalDependenciesConverter -treeFile {0} -enhanced++ > {1}.conllu".format("../"+os.path.join(parse_data, fn), "../"+os.path.join(dep_data, fn_out)))

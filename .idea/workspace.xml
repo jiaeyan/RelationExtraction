@@ -2,7 +2,181 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="239ca644-c2f8-48ce-ac61-3eddcaffd669" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/run.py" afterPath="$PROJECT_DIR$/run.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001001.2021.0521.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001002.0615.0146.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001002.1912.0524.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001006.0338.0184.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001007.0339.0149.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001007.1745.0371.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001007.1745.0378.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001008.1511.0218.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001009.1751.0391.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001012.1321.0434.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001012.1742.0669.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001012.1742.0683.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001012.1742.0694.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001014.1040.0236.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001016.1325.0321.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001017.1313.0395.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001017.1313.0396.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001017.2123.0809.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001018.1350.0453.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001018.1734.0654.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001019.0539.0213.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001021.1258.0261.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001021.1730.0351.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001022.1735.0376.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001023.0423.0148.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001023.2100.0686.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001024.1749.0568.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001028.2128.0472.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001028.2128.0494.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001030.1921.0538.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001031.0325.0168.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001102.1223.0376.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001103.1315.0364.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001106.1252.0310.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001107.1227.0371.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001110.1844.0453.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001112.0900.0305.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001113.1815.0535.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001113.2122.0704.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001118.1953.0586.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001118.1953.0594.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001120.1450.0376.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001124.1445.0280.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001124.1811.0405.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001126.1818.0460.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001127.1346.0419.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001129.1802.0602.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001130.2108.0849.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001202.0257.0120.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001202.0257.0136.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001202.2035.0562.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001203.1456.0329.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001204.2149.0765.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001205.1847.0645.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001205.2150.0791.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001207.2118.0838.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001208.1126.0362.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001209.0634.0301.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001209.0634.0303.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001211.0507.0196.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001211.1441.0436.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001211.2132.0815.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001212.1729.0582.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001216.2012.0590.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001218.0541.0172.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001218.2221.0727.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001219.1316.0416.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001220.1709.0630.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001221.0431.0210.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001221.0431.0227.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001221.1133.0465.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001224.2108.0553.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/APW20001225.2035.0477.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001001.2157.0225.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001002.1754.0290.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001002.2133.0471.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001006.2228.0370.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001008.2100.0120.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001011.2209.0444.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001012.1539.0165.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001017.1908.0279.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001019.2136.0319.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001020.2025.0304.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001020.2144.0366.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001021.1123.0068.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001023.2203.0479.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001024.2203.0349.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001026.2219.0407.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001027.1622.0218.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001027.2150.0417.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001101.2212.0429.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001102.1839.0338.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001102.1839.0340.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001103.2226.0443.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001106.1705.0187.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001107.1907.0300.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001109.1946.0315.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001111.1033.0046.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001111.1247.0093.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001114.0210.0200.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001115.2157.0439.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001116.0145.0061.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001119.2132.0191.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001122.2009.0333.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001122.2009.0341.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001123.1511.0062.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001124.2050.0257.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001125.1558.0117.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001127.2103.0306.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001127.2214.0372.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001128.1940.0266.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001129.2040.0383.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001201.2100.0325.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001210.1714.0041.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001210.1847.0092.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001210.2233.0155.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001211.2158.0448.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001212.2027.0351.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001214.1824.0331.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001216.1450.0120.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001216.1856.0177.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001217.2241.0165.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001218.2144.0401.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001222.2029.0326.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001228.1932.0266.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001228.2223.0362.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001229.2047.0291.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/data/dep-files/NYT20001230.1309.0093.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/DependencyParserDemo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/LICENSE.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/Makefile" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/ParserDemo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/ParserDemo2.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/README.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/README_dependencies.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/ShiftReduceDemo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/StanfordDependenciesManual.pdf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/bin/makeSerialized.csh" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/bin/run-tb-preproc" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/build.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/conf/atb-latest.conf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/conf/ftb-latest.conf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/data/arabic-onesent-utf8.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/data/chinese-onesent-gb18030.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/data/chinese-onesent-unseg-gb18030.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/data/chinese-onesent-unseg-utf8.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/data/chinese-onesent-utf8.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/data/english-onesent.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/data/french-onesent.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/data/german-onesent.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/data/pos-sentences.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/data/testsent.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/dep_parsed.conllu" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/ejml-0.23-src.zip" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/ejml-0.23.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/lexparser-gui.bat" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/lexparser-gui.command" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/lexparser-gui.sh" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/lexparser-lang-train-test.sh" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/lexparser-lang.sh" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/lexparser.bat" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/lexparser.sh" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/lexparser_lang.def" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/pom.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/slf4j-api-1.7.12-sources.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/slf4j-api.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/stanford-parser-3.9.1-javadoc.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/stanford-parser-3.9.1-models.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/stanford-parser-3.9.1-sources.jar" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/stanford-parser/stanford-parser.jar" />
+      <change beforePath="$PROJECT_DIR$/.idea/RelationExtraction.iml" afterPath="$PROJECT_DIR$/.idea/RelationExtraction.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/data_prep.py" afterPath="$PROJECT_DIR$/data_prep.py" />
+      <change beforePath="$PROJECT_DIR$/features.py" afterPath="$PROJECT_DIR$/features.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -11,23 +185,27 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/RelationExtraction$run.coverage" NAME="run Coverage Results" MODIFIED="1521822779215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RelationExtraction$data_prep.coverage" NAME="data_prep Coverage Results" MODIFIED="1521808246587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="features.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/features.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+            <state relative-caret-position="867">
+              <caret line="52" column="7" lean-forward="false" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_prep.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="data_prep.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_prep.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="58" column="24" lean-forward="false" selection-start-line="58" selection-start-column="24" selection-end-line="59" selection-end-column="30" />
+            <state relative-caret-position="720">
+              <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -35,14 +213,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="510">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="APW20001001.2021.0521.head.rel.tokenized.raw.parse" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/parsed-files/APW20001001.2021.0521.head.rel.tokenized.raw.parse">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="297" lean-forward="false" selection-start-line="10" selection-start-column="297" selection-end-line="10" selection-end-column="297" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -56,6 +242,17 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>True</find>
+      <find>modifies=True</find>
+      <find>z</find>
+      <find>(NP (DT The) (NN person)) (SBAR (WHNP (WP who))</find>
+    </findStrings>
+    <dirStrings>
+      <dir>C:\Users\Luke\Documents\GitHub\RelationExtraction\data\parsed-files</dir>
+    </dirStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -63,17 +260,23 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/hahaha.py" />
-        <option value="$PROJECT_DIR$/data_prep.py" />
-        <option value="$PROJECT_DIR$/features.py" />
         <option value="$PROJECT_DIR$/run.py" />
+        <option value="$PROJECT_DIR$/features.py" />
+        <option value="$PROJECT_DIR$/data_prep.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-28" />
-    <option name="y" value="25" />
-    <option name="width" value="1024" />
-    <option name="height" value="640" />
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1364" />
+    <option name="height" value="726" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -91,7 +294,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -99,15 +302,30 @@
               <item name="RelationExtraction" type="b2602c69:ProjectViewProjectNode" />
               <item name="RelationExtraction" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="RelationExtraction" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RelationExtraction" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="RelationExtraction" sdk-home="C:\Users\Luke\PycharmProjects\nn_coref\venv\Scripts\python.exe">
+        <option name="mySdkHome" value="C:\Users\Luke\PycharmProjects\nn_coref\venv\Scripts\python.exe" />
+        <option name="myModuleName" value="RelationExtraction" />
+      </console-settings>
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -134,6 +352,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RelationExtraction" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_prep.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -152,6 +371,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RelationExtraction" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -186,39 +406,124 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-28" y="25" width="1024" height="640" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15429688" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32922536" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26701966" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34313726" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1709531" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34313726" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data_prep.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="13" />
+    </breakpoint-manager>
     <watches-manager />
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>self.tree[self.tree.leaf_treeposition(2)[:-1]].parent() == self.tree[self.mention1.tree_pos].parent()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.tree[self.tree.leaf_treeposition(2)[:-1]].parent()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.tree[self.tree.leaf_treeposition(2)[:-1]]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.tree[self.tree.leaf_treeposition(0)[:-1]]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.tree[self.tree.leaf_treeposition(1)[:-1]]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.tree[self.tree.leaf_treeposition(4)[:-1]]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.tree[self.tree.leaf_treeposition(4)[-1]]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.tree[self.tree.leaf_treeposition(4)]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>self.tree[self.tree.leaf_treeposition(2)]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/features.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
+        <state relative-caret-position="374">
           <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
           <folding />
         </state>
@@ -226,7 +531,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_prep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
+        <state relative-caret-position="969">
           <caret line="58" column="24" lean-forward="false" selection-start-line="58" selection-start-column="24" selection-end-line="59" selection-end-column="30" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -236,10 +541,172 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
+        <state relative-caret-position="204">
           <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/relation-evaluator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="54" column="6" lean-forward="false" selection-start-line="54" selection-start-column="6" selection-end-line="54" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/conda/conda/envs/tensorflow/Lib/site-packages/nltk/tree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="678" column="0" lean-forward="false" selection-start-line="678" selection-start-column="0" selection-end-line="678" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/conda/conda/envs/tensorflow/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="319" column="0" lean-forward="false" selection-start-line="319" selection-start-column="0" selection-end-line="319" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/conda/conda/envs/tensorflow/Lib/sre_compile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/rel-trainset.gold">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="8826" column="88" lean-forward="false" selection-start-line="8826" selection-start-column="88" selection-end-line="8826" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/postagged-files/APW20001002.0615.0146.head.rel.tokenized.raw.tag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mallet-maxent-classifier.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dep_parsed.conllu">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed-files/NYT20001230.1309.0093.head.rel.tokenized.raw.parse">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="63" lean-forward="false" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed-files/NYT20001229.2047.0291.head.rel.tokenized.raw.parse">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/postagged-files/APW20001001.2021.0521.head.rel.tokenized.raw.tag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/parsed-files/APW20001001.2021.0521.head.rel.tokenized.raw.parse">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="297" lean-forward="false" selection-start-line="10" selection-start-column="297" selection-end-line="10" selection-end-column="297" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stanford-parser-full-2018-02-27/dep_parsed.conllu">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="41" lean-forward="true" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="52" column="7" lean-forward="false" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/dep-files/APW20001001.2021.0521.conllu">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/dep-files/NYT20001107.1907.0300.conllu">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_prep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

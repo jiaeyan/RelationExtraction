@@ -38,12 +38,13 @@ class MentionPair:
         features["comb_pos"] = self.mention1.pos + "-" + self.mention2.pos
         # issue in sents with parentheses where POS / word index are not equivalent to word index in tree
         features["siblings"] = str(self.tree[self.mention1.tree_pos].parent() == self.tree[self.mention2.tree_pos].parent())
-        # probably not useful only occurs positively 53 times in training mostly no_rel
-        # features["modifies"] = str(features['siblings'] == "True" and self.head(self.mention1.pos) and not self.head(self.mention2.pos))
-        features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
 
         # features["ancestor"] = self.tree[self.mention2.tree_pos] in self.tree[self.mention1.tree_pos].subtrees()
         # features["descendant"] =
+
+        # unsuccessful features
+        # features["modifies"] = str(features['siblings'] == "True" and self.head(self.mention1.pos) and not self.head(self.mention2.pos))
+        features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
 
 
         return features
