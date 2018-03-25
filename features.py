@@ -147,15 +147,15 @@ class MentionPair:
         # head of the mention
         features["HM1"] = self.mention1.features["head"]
         # pos tag of head of the mention
-        features["HPM1"] = self.mention1.features["head_pos"]
+        # features["HPM1"] = self.mention1.features["head_pos"]
 
         features["WM2"] = self.mention2.word
         features["HM2"] = self.mention2.features["head"]
-        features["HPM2"] = self.mention2.features["head_pos"]
+        # features["HPM2"] = self.mention2.features["head_pos"]
 
         # combinations of head words and their pos tags of mention 1 and 2
         features["HM12"] = features["HM1"] + " " + features["HM2"]
-        features["HPM12"] = features["HPM1"] + " " + features["HPM2"]
+        # features["HPM12"] = features["HPM1"] + " " + features["HPM2"]
 
         # first and second words before mention1
         features["BM1F"] = self.mention1.features["first_word_before"]
