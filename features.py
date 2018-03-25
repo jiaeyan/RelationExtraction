@@ -102,8 +102,8 @@ class MentionPair:
         features["AM1F"] = self.mention2.features["first_word_after"]
         features["AM1S"] = self.mention2.features["second_word_after"]
 
-        # words between mention1 and mention2
-        features["WBF"], features["WBL"], features["WBO"], features["WBFL"], features["WBNULL"], features["#WB"] = \
+        # words between mention1 and mention2, features["#WB"]
+        features["WBF"], features["WBL"], features["WBO"], features["WBFL"], features["WBNULL"] = \
             self.get_words_between()
 
         # combination of entity types
@@ -151,7 +151,7 @@ class MentionPair:
         else:
             no_w = True
 
-        return first_w, last_w, other_w, only_w, no_w, between_range
+        return first_w, last_w, other_w, only_w, no_w  #, between_range
 
     def check_mention_inclusion(self):
         span1 = self.mention1.span
