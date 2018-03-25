@@ -77,16 +77,18 @@ def get_geo_dict(geo_data):
         for city in cities:
             geo_dict[country].add(city.strip().replace("-", " "))
 
-        country_short = "".join([word[0] for word in country.split()])
-        if len(country_short) > 1:
-            country_short_dot = ".".join(list(country_short)) + "."
-            det_country = "the " + country_short
-            det_country_dot = "the " + country_short_dot
+        # make "United States" to "US", "U.S.", "the US" and "the U.S."
+        if country.istitle():
+            country_short = "".join([word[0] for word in country.split()])
+            if len(country_short) > 1:
+                country_short_dot = ".".join(list(country_short)) + "."
+                det_country = "the " + country_short
+                det_country_dot = "the " + country_short_dot
 
-            geo_dict[country_short] = geo_dict[country]
-            geo_dict[country_short_dot] = geo_dict[country]
-            geo_dict[det_country] = geo_dict[country]
-            geo_dict[det_country_dot] = geo_dict[country]
+                geo_dict[country_short] = geo_dict[country]
+                geo_dict[country_short_dot] = geo_dict[country]
+                geo_dict[det_country] = geo_dict[country]
+                geo_dict[det_country_dot] = geo_dict[country]
 
     return geo_dict
 
