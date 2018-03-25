@@ -166,7 +166,8 @@ class MentionPair:
         features["AM1S"] = self.mention2.features["second_word_after"]
 
         # words between mention1 and mention2
-        features["WBF"], features["WBL"], features["WBO"], features["WBFL"], features["WBNULL"] = self.get_words_between()
+        features["WBF"], features["WBL"], features["WBO"], features["WBFL"], features["WBNULL"], features["#WB"] = \
+            self.get_words_between()
 
         # combination of entity types
         features["ET12"] = self.mention1.entity + " " + self.mention2.entity
@@ -174,12 +175,12 @@ class MentionPair:
 
         # features["pos1"] = self.mention1.pos
         # features["pos2"] = self.mention2.pos
-        # features["comb_pos"] = self.mention1.pos + "-" + self.mention2.pos
-        # # issue in sents with parentheses where POS / word index are not equivalent to word index in tree
-        # features["siblings"] = str(self.tree[self.mention1.tree_pos].parent() == self.tree[self.mention2.tree_pos].parent())
-        # # probably not useful only occurs positively 53 times in training mostly no_rel
-        # # features["modifies"] = str(features['siblings'] == "True" and self.head(self.mention1.pos) and not self.head(self.mention2.pos))
-        # features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
+        # features["comb_pos"] = self.mention1.pos + " " + self.mention2.pos
+        # issue in sents with parentheses where POS / word index are not equivalent to word index in tree
+        features["siblings"] = str(self.tree[self.mention1.tree_pos].parent() == self.tree[self.mention2.tree_pos].parent())
+        # probably not useful only occurs positively 53 times in training mostly no_rel
+        # features["modifies"] = str(features['siblings'] == "True" and self.head(self.mention1.pos) and not self.head(self.mention2.pos))
+        features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
 
         # features["ancestor"] = self.tree[self.mention2.tree_pos] in self.tree[self.mention1.tree_pos].subtrees()
         # features["descendant"] =
@@ -210,7 +211,7 @@ class MentionPair:
         else:
             no_w = "True"
 
-        return first_w, last_w, other_w, only_w, no_w
+        return first_w, last_w, other_w, only_w, no_w, between_range
 
     def head(self, pos):
         return pos.startswith("N") or pos.startswith("VB") or pos is "IN"
