@@ -76,7 +76,6 @@ def get_geo_dict(geo_data):
         country = country.strip().replace("-", " ")
         for city in cities:
             geo_dict[country].add(city.strip().replace("-", " "))
-        # didn't consider "XX of XX"， "ZZ and ZZ"
         country_short = "".join([word[0] for word in country.split()])
         if len(country_short) > 1:
             geo_dict[country_short] = geo_dict[country]
