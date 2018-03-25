@@ -10,30 +10,31 @@ parse_data = "data/parsed-files"
 
 def get_pairs(data):
     pos_dict = get_pos_dict(pos_data)
-    entity_pairs = []
     parse_dict = get_parse_dict(parse_data)
+    entity_pairs = []
     with open(data, 'r') as f:
         for line in f:
             fields = line.strip().split()
             fn = fields[1]
             sent_id = int(fields[2])
-            assert int(fields[2]) == int(fields[8])
-
-            span1 = [int(fields[3]), int(fields[4])]
-            pos1 = "_".join(pos_dict[fn][sent_id][span1[0]: span1[1]])
-            tree_pos1 = parse_dict[fn][sent_id].leaf_treeposition(span1[0])[:-1]
-            mention1 = Mention(fields[7], fields[5], pos1, span1, tree_pos1)
-
-            span2 = [int(fields[9]), int(fields[10])]
-            pos2 = "_".join(pos_dict[fn][sent_id][span2[0]: span2[1]])
-            tree_pos2 = parse_dict[fn][sent_id].leaf_treeposition(span2[0])[:-1]
-            mention2 = Mention(fields[13], fields[11], pos2, span2, tree_pos2)
-
             tree = parse_dict[fn][sent_id]
+            pos_list = [pair[-1] for pair in pos_dict[fn][sent_id]]
+            word_list = [pair[0] for pair in pos_dict[fn][sent_id]]
 
-            entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree))
+            mention1 = wrap_mention(fields, word_list, pos_list, tree, span_id1=3, span_id2=4, word_id=7, ent_id=5)
+            mention2 = wrap_mention(fields, word_list, pos_list, tree, span_id1=9, span_id2=10, word_id=13, ent_id=11)
+
+            entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree, word_list))
 
     return entity_pairs
+
+
+def wrap_mention(fields, word_list, pos_list, tree, span_id1=0, span_id2=0, word_id=0, ent_id=0):
+    span = [int(fields[span_id1]), int(fields[span_id2])]
+    pos = " ".join(pos_list[span[0]: span[1]])
+    tree_pos = tree.leaf_treeposition(span[0])[:-1]
+    mention = Mention(fields[word_id], fields[ent_id], pos, span, word_list, tree_pos)
+    return mention
 
 
 def get_pos_dict(pos_data):
@@ -45,7 +46,8 @@ def get_pos_dict(pos_data):
             for line in f:
                 line = line.strip()
                 if line:
-                    pos_list = [w_pos.split("_")[-1] for w_pos in line.split()]
+                    # the pos_list contains word and its pos tag pair as one element
+                    pos_list = [w_pos.split("_") for w_pos in line.split()]
                     pos_dict[fn[:21]].append(pos_list)
 
     return pos_dict
