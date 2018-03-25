@@ -89,5 +89,5 @@ def get_geo_dict(geo_data):
 #         fields = line.strip().split()
 #         print(fields)
 
-pairs = get_pairs("data/rel-trainset.gold")
-print(pairs[0].mention2.pos)
+# pairs = get_pairs("data/rel-trainset.gold")
+# print(pairs[0].mention2.pos)
