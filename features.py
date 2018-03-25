@@ -2,69 +2,6 @@ from nltk import ParentedTree
 import re
 
 
-# prepositions = ["about",
-# "below",
-# "excepting",
-# "off",
-# "toward",
-# "above",
-# "beneath",
-# "for",
-# "on",
-# "under",
-# "across",
-# "beside",
-# "besides",
-# "from",
-# "onto",
-# "underneath",
-# "after",
-# "between",
-# "in",
-# out
-# until
-# against
-# beyond
-# in front of
-# outside
-# up
-# along
-# but
-# inside
-# over
-# upon
-# among
-# by
-# in spite of
-# past
-# up to
-# around
-# concerning
-# instead of
-# regarding
-# with
-# at
-# despite
-# into
-# since
-# within
-# because of
-# down
-# like
-# through
-# without
-# before
-# during
-# near
-# throughout
-# with regard to
-# behind
-# except
-# of
-# to
-# with respect to]
-
-
 class Mention:
 
     def __init__(self, word, entity, pos, span, word_list, tree_pos):
@@ -155,7 +92,9 @@ class MentionPair:
 
         # combinations of head words and their pos tags of mention 1 and 2
         features["HM12"] = features["HM1"] + " " + features["HM2"]
-        features["HPM12"] = features["HPM1"] + " " + features["HPM2"]
+        features["HPM12"] = self.mention1.features["head_pos"] + " " + self.mention2.features["head_pos"]
+
+        # features["HPM12"] = features["HPM1"] + " " + features["HPM2"]
 
         # first and second words before mention1
         features["BM1F"] = self.mention1.features["first_word_before"]
