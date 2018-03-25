@@ -92,8 +92,6 @@ class MentionPair:
 
         # combinations of head words and their pos tags of mention 1 and 2
         features["HM12"] = features["HM1"] + " " + features["HM2"]
-        features["HPM12"] = self.mention1.features["head_pos"] + " " + self.mention2.features["head_pos"]
-
         # features["HPM12"] = features["HPM1"] + " " + features["HPM2"]
 
         # first and second words before mention1
@@ -111,10 +109,13 @@ class MentionPair:
         # combination of entity types
         features["ET12"] = self.mention1.entity + " " + self.mention2.entity
 
+        # mention inclusions
+        # features["M1>M2"], features["M2>M1"] = self.check_mention_inclusion()
 
-        # features["pos1"] = self.mention1.pos
-        # features["pos2"] = self.mention2.pos
-        # features["comb_pos"] = self.mention1.pos + " " + self.mention2.pos
+
+        features["pos1"] = self.mention1.pos
+        features["pos2"] = self.mention2.pos
+        features["comb_pos"] = self.mention1.pos + " " + self.mention2.pos
         # issue in sents with parentheses where POS / word index are not equivalent to word index in tree
         # features["siblings"] = str(self.tree[self.mention1.tree_pos].parent() == self.tree[self.mention2.tree_pos].parent())
         # probably not useful only occurs positively 53 times in training mostly no_rel
@@ -156,7 +157,8 @@ class MentionPair:
         span1 = self.mention1.span
         span2 = self.mention2.span
         m1hasm2 = True if span1[0] <= span2[0] and span1[1] >= span2[1] else False
-        m2hasm1 = True if span1[0] <= span2[0] and span1[1] >= span2[1] else False
+        m2hasm1 = True if span2[0] <= span1[0] and span2[1] >= span1[1] else False
+        return m1hasm2, m2hasm1
 
     def head(self, pos):
         return pos.startswith("N") or pos.startswith("VB") or pos is "IN"
