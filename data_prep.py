@@ -71,7 +71,7 @@ def get_parse_dict(parse_data):
 
 def get_geo_dict(geo_data):
     geo_dict = defaultdict(set)
-    mapping = json.load(open(geo_data))
+    mapping = json.load(open(geo_data), encoding="utf8")
     for country, cities in mapping.items():
         country = country.strip().replace("-", " ")
         for city in cities:
