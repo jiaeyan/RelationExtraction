@@ -113,9 +113,9 @@ class MentionPair:
         # features["M1>M2"], features["M2>M1"] = self.check_mention_inclusion()
 
 
-        features["pos1"] = self.mention1.pos
-        features["pos2"] = self.mention2.pos
-        features["comb_pos"] = self.mention1.pos + " " + self.mention2.pos
+        # features["pos1"] = self.mention1.pos
+        # features["pos2"] = self.mention2.pos
+        # features["comb_pos"] = self.mention1.pos + " " + self.mention2.pos
         # issue in sents with parentheses where POS / word index are not equivalent to word index in tree
         # features["siblings"] = str(self.tree[self.mention1.tree_pos].parent() == self.tree[self.mention2.tree_pos].parent())
         # probably not useful only occurs positively 53 times in training mostly no_rel
