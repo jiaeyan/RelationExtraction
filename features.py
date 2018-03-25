@@ -165,20 +165,25 @@ class MentionPair:
         w1 = self.clean_word(self.mention1.word, geo_dict)
         w2 = self.clean_word(self.mention2.word, geo_dict)
 
-        features["GHAS"] = False
-        features["GIN"] = False
+        # features["GHAS"] = False
+        # features["GIN"] = False
         features["CountryET2"] = "None"
         features["ET1Country"] = "None"
 
-        # didn't consider "US" in "the US" or "U.S."
-        if w1 in geo_dict and w2 in geo_dict[w1]:
-            features["GHAS"] = True
-        elif w2 in geo_dict and w1 in geo_dict[w2]:
-            features["GIN"] = True
-        elif w1 in geo_dict or any([w1 in cities for cities in geo_dict.values()]):
+        if w1 in geo_dict or any([w1 in cities for cities in geo_dict.values()]):
             features["CountryET2"] = self.mention2.entity
         elif w2 in geo_dict or any([w2 in cities for cities in geo_dict.values()]):
             features["ET1Country"] = self.mention1.entity
+
+        # didn't consider "US" in "the US" or "U.S."
+        # if w1 in geo_dict and w2 in geo_dict[w1]:
+        #     features["GHAS"] = True
+        # elif w2 in geo_dict and w1 in geo_dict[w2]:
+        #     features["GIN"] = True
+        # elif w1 in geo_dict or any([w1 in cities for cities in geo_dict.values()]):
+        #     features["CountryET2"] = self.mention2.entity
+        # elif w2 in geo_dict or any([w2 in cities for cities in geo_dict.values()]):
+        #     features["ET1Country"] = self.mention1.entity
 
 
     def clean_word(self, word, geo_dict):
