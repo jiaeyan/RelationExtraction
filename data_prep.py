@@ -1,16 +1,19 @@
 import os
-from features import Mention, MentionPair
-from nltk import ParentedTree
 import re
-
+import json
+from collections import defaultdict
+from nltk import ParentedTree
+from features import Mention, MentionPair
 
 pos_data = "data/postagged-files"
 parse_data = "data/parsed-files"
+geo_data = "data/CountriesToCities.json"
 
 
 def get_pairs(data):
     pos_dict = get_pos_dict(pos_data)
     parse_dict = get_parse_dict(parse_data)
+    geo_dict = get_geo_dict(geo_data)
     entity_pairs = []
     with open(data, 'r') as f:
         for line in f:
@@ -24,7 +27,7 @@ def get_pairs(data):
             mention1 = wrap_mention(fields, word_list, pos_list, tree, span_id1=3, span_id2=4, word_id=7, ent_id=5)
             mention2 = wrap_mention(fields, word_list, pos_list, tree, span_id1=9, span_id2=10, word_id=13, ent_id=11)
 
-            entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree, word_list))
+            entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree, word_list, geo_dict))
 
     return entity_pairs
 
@@ -65,6 +68,20 @@ def get_parse_dict(parse_data):
                     parse_dict[fn[:21]].append(line)
     return parse_dict
 
+
+def get_geo_dict(geo_data):
+    geo_dict = defaultdict(set)
+    mapping = json.load(open(geo_data))
+    for country, cities in mapping.items():
+        country = country.strip().replace("-", " ")
+        for city in cities:
+            geo_dict[country].add(city.strip().replace("-", " "))
+        # didn't consider "XX of XX"， "ZZ and ZZ"
+        country_short = "".join([word[0] for word in country.split()])
+        if len(country_short) > 1:
+            geo_dict[country_short] = geo_dict[country]
+    return geo_dict
+
 # pos_dict = get_pos_dict(pos_data)
 # print(pos_dict["APW20001001.2021.0521"][3])
 
@@ -73,5 +90,5 @@ def get_parse_dict(parse_data):
 #         fields = line.strip().split()
 #         print(fields)
 
-# pairs = get_pairs("data/rel-trainset.gold")
-# print(pairs[0].mention2.pos)
+pairs = get_pairs("data/rel-trainset.gold")
+print(pairs[0].mention2.pos)
