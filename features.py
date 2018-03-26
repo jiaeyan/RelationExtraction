@@ -53,10 +53,9 @@ class MentionPair:
         self.rel = rel
         self.tree = tree
         self.word_list = word_list
+        self.mid_words = word_list[mention1.span[1]: mention2.span[0]]
         # self.headed_tree = self.get_heads()
         self.features = self.get_features(geo_dict, names)
-
-        self.mid_words = word_list[mention1.span[1]: mention2.span[0]]
 
     def get_heads(self):
 
