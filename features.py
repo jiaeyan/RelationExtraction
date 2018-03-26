@@ -274,7 +274,7 @@ class MentionPair:
 
         if features["OWN"]:
             ents = features["ET12"].split()
-            if "by" in self.mid_words[-1]:
+            if "by" in self.mid_words:
                 features["OWNER"] = ents[1]
                 features["OWNEE"] = ents[0]
                 features["OWNBY"] = features["ET12"]
