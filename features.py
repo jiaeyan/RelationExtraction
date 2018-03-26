@@ -125,7 +125,7 @@ class MentionPair:
         # features['ET12SameVP'] = 0
 
         # words between mention1 and mention2, features["#WB"]
-        self.get_words_pos_between(features)
+        # self.get_words_pos_between(features)
 
         # geo checking between mentions
         # self.check_geo_info(features, geo_dict)
