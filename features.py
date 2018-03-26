@@ -93,16 +93,16 @@ class MentionPair:
         # features["HPM12"] = features["HPM1"] + " " + features["HPM2"]
 
         # first and second words before mention1
-        # features["BM1F"] = self.mention1.features["first_word_before"]
-        # features["BM1S"] = self.mention1.features["second_word_before"]
+        features["BM1F"] = self.mention1.features["first_word_before"]
+        features["BM1S"] = self.mention1.features["second_word_before"]
 
         # first and second pos before mention1
         # features["PBM1F"] = self.mention1.features["first_pos_before"]
         # features["PBM1S"] = self.mention1.features["second_pos_before"]
 
         # first and second words after mention2'
-        # features["AM1F"] = self.mention2.features["first_word_after"]
-        # features["AM1S"] = self.mention2.features["second_word_after"]
+        features["AM1F"] = self.mention2.features["first_word_after"]
+        features["AM1S"] = self.mention2.features["second_word_after"]
 
         # first and second pos after mention2'
         # features["PAM1F"] = self.mention2.features["first_pos_after"]
@@ -125,7 +125,7 @@ class MentionPair:
         # features['ET12SameVP'] = 0
 
         # words between mention1 and mention2, features["#WB"]
-        # self.get_words_pos_between(features)
+        self.get_words_pos_between(features)
 
         # geo checking between mentions
         # self.check_geo_info(features, geo_dict)
