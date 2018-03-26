@@ -93,23 +93,23 @@ class MentionPair:
         # features["HPM12"] = features["HPM1"] + " " + features["HPM2"]
 
         # first and second words before mention1
-        features["BM1F"] = self.mention1.features["first_word_before"]
-        features["BM1S"] = self.mention1.features["second_word_before"]
+        # features["BM1F"] = self.mention1.features["first_word_before"]
+        # features["BM1S"] = self.mention1.features["second_word_before"]
 
         # first and second pos before mention1
         # features["PBM1F"] = self.mention1.features["first_pos_before"]
         # features["PBM1S"] = self.mention1.features["second_pos_before"]
 
         # first and second words after mention2'
-        features["AM1F"] = self.mention2.features["first_word_after"]
-        features["AM1S"] = self.mention2.features["second_word_after"]
+        # features["AM1F"] = self.mention2.features["first_word_after"]
+        # features["AM1S"] = self.mention2.features["second_word_after"]
 
         # first and second pos after mention2'
         # features["PAM1F"] = self.mention2.features["first_pos_after"]
         # features["PAM1S"] = self.mention2.features["second_pos_after"]
 
         # combination of entity types
-        features["ET12"] = self.mention1.entity + " " + self.mention2.entity
+        # features["ET12"] = self.mention1.entity + " " + self.mention2.entity
 
         # combination of entity type and dependent word ---> DECREASE PERFORMANCE
         # features["ET1DW1"] = self.mention1.entity + " " + self.tree.leaves()[self.dep[self.mention1.span[0]][1]]
@@ -128,13 +128,13 @@ class MentionPair:
         self.get_words_pos_between(features)
 
         # geo checking between mentions
-        self.check_geo_info(features, geo_dict)
+        # self.check_geo_info(features, geo_dict)
 
         # check family relation
-        self.check_family(features, geo_dict, names)
+        # self.check_family(features, geo_dict, names)
 
         # check invent relation
-        self.check_create(features)
+        # self.check_create(features)
 
         # check onwereship relation --> DECREASE PERFORMANCE
         # self.check_own(features)
