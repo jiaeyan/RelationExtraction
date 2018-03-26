@@ -162,7 +162,7 @@ class MentionPair:
         if ents == "GPE GPE":
             if w1 in geo_dict and w2 in geo_dict[w1]:
                 features["GHAS"] = True
-            if w2 in geo_dict and w1 in geo_dict[w2]:
+            elif w2 in geo_dict and w1 in geo_dict[w2]:
                 features["GIN"] = True
         elif ents[0] == "GPE":
             if w1 in geo_dict or any([w1 in cities for cities in geo_dict.values()]):
