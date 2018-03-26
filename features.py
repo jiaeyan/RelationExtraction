@@ -246,6 +246,7 @@ class MentionPair:
 
     def check_create(self, features):
         features["CREATE"] = False
+        features["CREATENUM"] = 0
         features["CREATOR"] = "None"
         features["CREATEE"] = "None"
         features["CREATEBY"] = "None"
@@ -259,7 +260,8 @@ class MentionPair:
             for trigger in triggers:
                 if trigger in word.lower():
                     features["CREATE"] = True
-                    break
+                    features["CREATENUM"] += 1
+                    # break
 
         if features["CREATE"]:
             ents = features["ET12"].split()
