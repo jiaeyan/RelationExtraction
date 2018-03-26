@@ -1,5 +1,5 @@
 from nltk import ParentedTree
-
+from nltk.corpus import wordnet as wn
 
 class Mention:
 
@@ -135,7 +135,7 @@ class MentionPair:
         # check family relation
         self.check_family(features, geo_dict, names)
 
-        # check invent relation
+        # check invent relation --> DECREASE PERFORMANCE
         # self.check_create(features)
 
         # check onwereship relation --> DECREASE PERFORMANCE
@@ -332,6 +332,10 @@ class MentionPair:
                 features["OWNER"] = ents[0]
                 features["OWNEE"] = ents[1]
                 features["BYOWN"] = features["ET12"]
+
+    def get_wordnet_info(self, features):
+        hm1 = features["HM1"]
+        hm2 = features["HM2"]
 
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word
