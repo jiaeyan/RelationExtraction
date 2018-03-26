@@ -115,12 +115,13 @@ def read_name_file(data_file, names):
 # pos_dict = get_pos_dict(pos_data)
 # print(pos_dict["APW20001001.2021.0521"][3])
 
-# ner = set()
+# ner = defaultdict(int)
 # with open("data/rel-trainset.gold", 'r') as f:
 #     for line in f:
 #         fields = line.strip().split()
-#         ner.add(fields[5])
-#         ner.add(fields[11])
-# print(ner)
+#         ner[fields[0]] += 1
+#         # ner[fields[11]] += 1
+# print(sorted(ner.items(), key=lambda x: x[1], reverse=True))
+
 # pairs = get_pairs("data/rel-trainset.gold")
 # print(pairs[0].mention2.pos)
