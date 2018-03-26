@@ -46,7 +46,7 @@ class Mention:
         third_w = self.word_list[mention_end + 2] if mention_end < sent_len - 2 else "None"
         features["first_word_after"] = first_w
         features["second_word_after"] = second_w
-        features["third_word_after"] = second_w
+        features["third_word_after"] = third_w
 
 
 class MentionPair:
