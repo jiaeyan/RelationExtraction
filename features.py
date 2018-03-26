@@ -32,8 +32,10 @@ class Mention:
         mention_start = self.span[0]
         first_w = self.word_list[mention_start - 1] if mention_start > 0 else "None"
         second_w = self.word_list[mention_start - 2] if mention_start > 1 else "None"
+        third_w = self.word_list[mention_start - 3] if mention_start > 2 else "None"
         features["first_word_before"] = first_w
         features["second_word_before"] = second_w
+        features["third_word_before"] = third_w
 
     def get_words_after(self, features):
         # end of span already points to the first word that is not in mention
@@ -41,8 +43,10 @@ class Mention:
         sent_len = len(self.word_list)
         first_w = self.word_list[mention_end] if mention_end < sent_len else "None"
         second_w = self.word_list[mention_end + 1] if mention_end < sent_len - 1 else "None"
+        third_w = self.word_list[mention_end + 2] if mention_end < sent_len - 2 else "None"
         features["first_word_after"] = first_w
         features["second_word_after"] = second_w
+        features["third_word_after"] = second_w
 
 
 class MentionPair:
@@ -81,10 +85,12 @@ class MentionPair:
         # first and second words before mention1
         features["BM1F"] = self.mention1.features["first_word_before"]
         features["BM1S"] = self.mention1.features["second_word_before"]
+        features["BM1T"] = self.mention1.features["third_word_before"]
 
         # first and second words after mention2'
         features["AM1F"] = self.mention2.features["first_word_after"]
         features["AM1S"] = self.mention2.features["second_word_after"]
+        features["AM1T"] = self.mention2.features["third_word_after"]
 
         # combination of entity types
         features["ET12"] = self.mention1.entity + " " + self.mention2.entity
