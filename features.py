@@ -90,12 +90,12 @@ class MentionPair:
         features["ET12"] = self.mention1.entity + " " + self.mention2.entity
 
         # combination of entity type and dependent word
-        features["ET1DW1"] = self.mention1.entity + " " + self.word_list[self.dep[self.mention1.span[0]][1]]
-        features["ET2DW2"] = self.mention2.entity + " " + self.word_list[self.dep[self.mention2.span[0]][1]]
+        features["ET1DW1"] = self.mention1.entity + " " + self.tree.leaves()[self.dep[self.mention1.span[0]][1]]
+        features["ET2DW2"] = self.mention2.entity + " " + self.tree.leaves()[self.dep[self.mention2.span[0]][1]]
 
         # combination of head word and dependent word
-        features["H1DW1"] = self.mention1.features["head"] + " " + self.word_list[self.dep[self.mention1.span[0]][1]]
-        features["H2DW2"] = self.mention1.features["head"] + " " + self.word_list[self.dep[self.mention1.span[0]][1]]
+        # features["H1DW1"] = self.mention1.features["head"] + " " + self.tree.leaves()[self.dep[self.mention1.span[0]][1]]
+        # features["H2DW2"] = self.mention2.features["head"] + " " + self.tree.leaves()[self.dep[self.mention2.span[0]][1]]
 
         # combination of ET12 and if they are in the same (type of) phrase
         # features['ET12SameNP'] = 0
