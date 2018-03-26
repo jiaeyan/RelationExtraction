@@ -255,11 +255,11 @@ class MentionPair:
 
         # some relative trigger verbs between mentions
         for i, word in enumerate(self.mid_words):
-            if self.mid_poss[i].startswith("VB"):
-                for trigger in triggers:
-                    if trigger in word.lower():
-                        features["CREATE"] = True
-                        break
+            # if self.mid_poss[i].startswith("VB"):
+            for trigger in triggers:
+                if trigger in word.lower():
+                    features["CREATE"] = True
+                    break
 
         if features["CREATE"]:
             ents = features["ET12"].split()
