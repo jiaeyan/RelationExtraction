@@ -176,14 +176,12 @@ class MentionPair:
         # words = self.clean_word(mention.word, geo_dict).split()
         pos = mention.pos.split()
 
-        if len(pos) == 1 and pos[0] == "PRP":
+        if "PRP" in pos:
             return "PRONOUN"
         elif "NNP" in pos or "NNPS" in pos:
             return "NAME"
-        elif "NN" in pos or "NNS" in pos:
-            return "NOMIAL"
         else:
-            return "NONE"
+            return "NOMIAL"
 
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word
