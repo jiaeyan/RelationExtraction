@@ -171,6 +171,7 @@ class MentionPair:
         features["WBL"] = "None"
         features["WBSF"] = "None"
         features["WBSL"] = "None"
+        features["WBSFL"] = "None"
         features["WBO"] = "None"
         features["WBFL"] = "None"
         features["WBNULL"] = False
@@ -191,7 +192,7 @@ class MentionPair:
         elif between_range == 3:
             features["WBF"] = self.word_list[start]
             features["WBL"] = self.word_list[end]
-            features["WBO"] = " ".join(self.word_list[start + 1: end])
+            features["WBSFL"] = " ".join(self.word_list[start + 1: end])
 
         elif between_range == 2:
             features["WBF"] = self.word_list[start]
