@@ -123,11 +123,6 @@ class MentionPair:
         # features["H1DW1"] = self.mention1.features["head"] + " " + self.tree.leaves()[self.dep[self.mention1.span[0]][1]]
         # features["H2DW2"] = self.mention2.features["head"] + " " + self.tree.leaves()[self.dep[self.mention2.span[0]][1]]
 
-        # combination of ET12 and if they are in the same (type of) phrase
-        # features['ET12SameNP'] = 0
-        # features['ET12SamePP'] = 0
-        # features['ET12SameVP'] = 0
-
         # words between mention1 and mention2, features["#WB"]
         self.get_words_pos_between(features)
 
