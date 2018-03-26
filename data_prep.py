@@ -85,16 +85,16 @@ def get_dep_dict(dep_data):
         with open(os.path.join(dep_data, fn)) as f:
             sent = []
             for line in f:
-                if line is '\n':
+                if not line.split():
                     dep_dict[fn[:21]].append(sent)
                     sent = []
                 else:
                     line = line.split()
                     if int(line[0]) == 1:
-                        sent.append((0, -1, 'NONE'))
+                        sent.append((0, 0, 'NONE'))
                     # (word#, dep_word#, relation)
                     sent.append((int(line[0]), int(line[6]), line[7]))
-
+    return dep_dict
 
 
 
