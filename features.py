@@ -128,7 +128,7 @@ class MentionPair:
         self.get_words_pos_between(features)
 
         # geo checking between mentions
-        # self.check_geo_info(features, geo_dict)
+        self.check_geo_info(features, geo_dict)
 
         # check family relation
         # self.check_family(features, geo_dict, names)
