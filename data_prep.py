@@ -28,7 +28,6 @@ def get_pairs(data):
             tree = parse_dict[fn][sent_id]
             pos_list = [pair[-1] for pair in pos_dict[fn][sent_id]]
             word_list = [pair[0] for pair in pos_dict[fn][sent_id]]
-            assert(len(pos_list) == len(word_list))
 
             mention1 = wrap_mention(fields, word_list, pos_list, tree, span_id1=3, span_id2=4, word_id=7, ent_id=5)
             mention2 = wrap_mention(fields, word_list, pos_list, tree, span_id1=9, span_id2=10, word_id=13, ent_id=11)
