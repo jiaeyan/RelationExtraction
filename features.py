@@ -177,7 +177,7 @@ class MentionPair:
 
         if len(words) == 1 and pos[0].startswith("PRP"):
             return "PRONOUN"
-        elif words[0].istitle() or words[1].istitle():
+        elif words[0].istitle() or (len(words) > 1 and words[1].istitle()):
             return "NAME"
         else:
             return "NOMIAL"
