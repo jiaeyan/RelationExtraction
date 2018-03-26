@@ -157,14 +157,28 @@ class MentionPair:
         features["CountryET2"] = "None"
         features["ET1Country"] = "None"
 
-        if w1 in geo_dict and w2 in geo_dict[w1]:
-            features["GHAS"] = True
-        elif w2 in geo_dict and w1 in geo_dict[w2]:
-            features["GIN"] = True
-        elif w1 in geo_dict or any([w1 in cities for cities in geo_dict.values()]):
-            features["CountryET2"] = self.mention2.entity
-        elif w2 in geo_dict or any([w2 in cities for cities in geo_dict.values()]):
-            features["ET1Country"] = self.mention1.entity
+        ents = features["ET12"].split()
+
+        if ents == "GPE GPE":
+            if w1 in geo_dict and w2 in geo_dict[w1]:
+                features["GHAS"] = True
+            if w2 in geo_dict and w1 in geo_dict[w2]:
+                features["GIN"] = True
+        elif ents[0] == "GPE":
+            if w1 in geo_dict or any([w1 in cities for cities in geo_dict.values()]):
+                features["CountryET2"] = ents[1]
+        elif ents[1] == "GPE":
+            if w2 in geo_dict or any([w2 in cities for cities in geo_dict.values()]):
+                features["ET1Country"] = ents[0]
+
+        # if w1 in geo_dict and w2 in geo_dict[w1]:
+        #     features["GHAS"] = True
+        # elif w2 in geo_dict and w1 in geo_dict[w2]:
+        #     features["GIN"] = True
+        # elif w1 in geo_dict or any([w1 in cities for cities in geo_dict.values()]):
+        #     features["CountryET2"] = self.mention2.entity
+        # elif w2 in geo_dict or any([w2 in cities for cities in geo_dict.values()]):
+        #     features["ET1Country"] = self.mention1.entity
 
     def get_mention_level(self, features, geo_dict):
         mt1 = self.check_mention_type(self.mention1, geo_dict)
@@ -182,6 +196,10 @@ class MentionPair:
             return "NAME"
         else:
             return "NOMIAL"
+
+    def check_family(self, geo_dict):
+        w1 = self.clean_word(self.mention1.word, geo_dict)
+        w2 = self.clean_word(self.mention2.word, geo_dict)
 
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word
