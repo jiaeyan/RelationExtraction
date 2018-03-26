@@ -99,6 +99,9 @@ class MentionPair:
         # check family relation
         self.check_family(features, geo_dict, names)
 
+        # check invent relation
+        self.check_create(features)
+
         # mention level relation --> DECREASE PERFORMANCE
         # self.get_mention_level(features, geo_dict)
 
@@ -230,7 +233,7 @@ class MentionPair:
         features["CREATE"] = False
 
         triggers = {"creat", "buil", "made", "make", "mak", "develop", "construct", "did", "finish", "draw", "drew",
-                    "coin", "writ", "wrote"}
+                    "coin", "writ", "wrote", "invent", "manufacture"}
 
         # some relative trigger verbs between mentions
         for word in self.mid_words:
