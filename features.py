@@ -173,35 +173,35 @@ class MentionPair:
         features["WBFL"] = "None"
         features["WBNULL"] = False
 
-        features["PBF"] = "None"
-        features["PBL"] = "None"
-        features["PBO"] = "None"
-        features["PBFL"] = "None"
-        features["PBNULL"] = False
+        # features["PBF"] = "None"
+        # features["PBL"] = "None"
+        # features["PBO"] = "None"
+        # features["PBFL"] = "None"
+        # features["PBNULL"] = False
 
         if between_range > 2:
             features["WBF"] = self.word_list[start]
             features["WBL"] = self.word_list[end]
             features["WBO"] = " ".join(self.word_list[start + 1: end])
 
-            features["PBF"] = self.pos_list[start]
-            features["PBL"] = self.pos_list[end]
-            features["PBO"] = " ".join(self.pos_list[start + 1: end])
+            # features["PBF"] = self.pos_list[start]
+            # features["PBL"] = self.pos_list[end]
+            # features["PBO"] = " ".join(self.pos_list[start + 1: end])
 
         elif between_range == 2:
             features["WBF"] = self.word_list[start]
             features["WBL"] = self.word_list[end]
 
-            features["PBF"] = self.pos_list[start]
-            features["PBL"] = self.pos_list[end]
+            # features["PBF"] = self.pos_list[start]
+            # features["PBL"] = self.pos_list[end]
 
         elif between_range == 1:
             features["WBFL"] = self.word_list[start]
-            features["PBFL"] = self.pos_list[start]
+            # features["PBFL"] = self.pos_list[start]
 
         else:
             features["WBNULL"] = True
-            features["PBNULL"] = True
+            # features["PBNULL"] = True
 
     def check_mention_inclusion(self):
         span1 = self.mention1.span
@@ -235,15 +235,6 @@ class MentionPair:
             # country and residence reverse
             if w2 in geo_dict or any([w2 in cities for cities in geo_dict.values()]):
                 features["ET1Country"] = ents[0]
-
-        # if w1 in geo_dict and w2 in geo_dict[w1]:
-        #     features["GHAS"] = True
-        # elif w2 in geo_dict and w1 in geo_dict[w2]:
-        #     features["GIN"] = True
-        # elif w1 in geo_dict or any([w1 in cities for cities in geo_dict.values()]):
-        #     features["CountryET2"] = self.mention2.entity
-        # elif w2 in geo_dict or any([w2 in cities for cities in geo_dict.values()]):
-        #     features["ET1Country"] = self.mention1.entity
 
     def get_mention_level(self, features, geo_dict):
         mt1 = self.check_mention_type(self.mention1, geo_dict)
