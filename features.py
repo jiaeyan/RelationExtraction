@@ -3,12 +3,13 @@ from nltk import ParentedTree
 
 class Mention:
 
-    def __init__(self, word, entity, pos, span, word_list, tree_pos):
+    def __init__(self, word, entity, pos, span, word_list, pos_list, tree_pos):
         self.word = word.strip().replace("_", " ")
         self.entity = entity
         self.pos = pos
         self.span = span
         self.word_list = word_list
+        self.pos_list = pos_list
         self.tree_pos = tree_pos
         self.features = self.get_features()
 
@@ -16,8 +17,8 @@ class Mention:
         features = {}
 
         self.get_head_pos(features)
-        self.get_words_before(features)
-        self.get_words_after(features)
+        self.get_words_pos_before(features)
+        self.get_words_pos_after(features)
 
         return features
 
@@ -28,21 +29,33 @@ class Mention:
         features["head"] = words[index]
         features["head_pos"] = poss[index]
 
-    def get_words_before(self, features):
+    def get_words_pos_before(self, features):
         mention_start = self.span[0]
+
         first_w = self.word_list[mention_start - 1] if mention_start > 0 else "None"
         second_w = self.word_list[mention_start - 2] if mention_start > 1 else "None"
         features["first_word_before"] = first_w
         features["second_word_before"] = second_w
 
-    def get_words_after(self, features):
+        first_p = self.pos_list[mention_start - 1] if mention_start > 0 else "None"
+        second_p = self.pos_list[mention_start - 2] if mention_start > 1 else "None"
+        features["first_pos_before"] = first_p
+        features["second_pos_before"] = second_p
+
+    def get_words_pos_after(self, features):
         # end of span already points to the first word that is not in mention
         mention_end = self.span[1]
         sent_len = len(self.word_list)
+
         first_w = self.word_list[mention_end] if mention_end < sent_len else "None"
         second_w = self.word_list[mention_end + 1] if mention_end < sent_len - 1 else "None"
         features["first_word_after"] = first_w
         features["second_word_after"] = second_w
+
+        first_p = self.pos_list[mention_end] if mention_end < sent_len else "None"
+        second_p = self.pos_list[mention_end + 1] if mention_end < sent_len - 1 else "None"
+        features["first_pos_after"] = first_p
+        features["second_pos_after"] = second_p
 
 
 class MentionPair:
@@ -54,6 +67,7 @@ class MentionPair:
         self.tree = tree
         self.dep = dep
         self.word_list = word_list
+        self.pos_list = pos_list
         self.mid_words = word_list[mention1.span[1]: mention2.span[0]]
         self.mid_poss = pos_list[mention1.span[1]: mention2.span[0]]
         # self.headed_tree = self.get_heads()
@@ -82,9 +96,17 @@ class MentionPair:
         features["BM1F"] = self.mention1.features["first_word_before"]
         features["BM1S"] = self.mention1.features["second_word_before"]
 
+        # first and second pos before mention1
+        # features["PBM1F"] = self.mention1.features["first_pos_before"]
+        # features["PBM1S"] = self.mention1.features["second_pos_before"]
+
         # first and second words after mention2'
         features["AM1F"] = self.mention2.features["first_word_after"]
         features["AM1S"] = self.mention2.features["second_word_after"]
+
+        # first and second pos after mention2'
+        # features["PAM1F"] = self.mention2.features["first_pos_after"]
+        # features["PAM1S"] = self.mention2.features["second_pos_after"]
 
         # combination of entity types
         features["ET12"] = self.mention1.entity + " " + self.mention2.entity
@@ -103,7 +125,7 @@ class MentionPair:
         # features['ET12SameVP'] = 0
 
         # words between mention1 and mention2, features["#WB"]
-        self.get_words_between(features)
+        self.get_words_pos_between(features)
 
         # geo checking between mentions
         self.check_geo_info(features, geo_dict)
@@ -132,7 +154,7 @@ class MentionPair:
         # features["siblings"] = str(self.tree[self.mention1.tree_pos].parent() == self.tree[self.mention2.tree_pos].parent())
         # probably not useful only occurs positively 53 times in training mostly no_rel
         # features["modifies"] = str(features['siblings'] == "True" and self.head(self.mention1.pos) and not self.head(self.mention2.pos))
-        # features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
+        features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
 
         # features["ancestor"] = self.tree[self.mention2.tree_pos] in self.tree[self.mention1.tree_pos].subtrees()
         # features["descendant"] =
@@ -140,7 +162,7 @@ class MentionPair:
 
         return features
 
-    def get_words_between(self, features):
+    def get_words_pos_between(self, features):
         start = self.mention1.span[1]
         end = self.mention2.span[0] - 1
         between_range = end - start + 1
@@ -151,17 +173,35 @@ class MentionPair:
         features["WBFL"] = "None"
         features["WBNULL"] = False
 
+        # features["PBF"] = "None"
+        # features["PBL"] = "None"
+        # features["PBO"] = "None"
+        # features["PBFL"] = "None"
+        # features["PBNULL"] = False
+
         if between_range > 2:
             features["WBF"] = self.word_list[start]
             features["WBL"] = self.word_list[end]
             features["WBO"] = " ".join(self.word_list[start + 1: end])
+
+            # features["PBF"] = self.pos_list[start]
+            # features["PBL"] = self.pos_list[end]
+            # features["PBO"] = " ".join(self.pos_list[start + 1: end])
+
         elif between_range == 2:
             features["WBF"] = self.word_list[start]
             features["WBL"] = self.word_list[end]
+
+            # features["PBF"] = self.pos_list[start]
+            # features["PBL"] = self.pos_list[end]
+
         elif between_range == 1:
             features["WBFL"] = self.word_list[start]
+            # features["PBFL"] = self.pos_list[start]
+
         else:
             features["WBNULL"] = True
+            # features["PBNULL"] = True
 
     def check_mention_inclusion(self):
         span1 = self.mention1.span
@@ -195,15 +235,6 @@ class MentionPair:
             # country and residence reverse
             if w2 in geo_dict or any([w2 in cities for cities in geo_dict.values()]):
                 features["ET1Country"] = ents[0]
-
-        # if w1 in geo_dict and w2 in geo_dict[w1]:
-        #     features["GHAS"] = True
-        # elif w2 in geo_dict and w1 in geo_dict[w2]:
-        #     features["GIN"] = True
-        # elif w1 in geo_dict or any([w1 in cities for cities in geo_dict.values()]):
-        #     features["CountryET2"] = self.mention2.entity
-        # elif w2 in geo_dict or any([w2 in cities for cities in geo_dict.values()]):
-        #     features["ET1Country"] = self.mention1.entity
 
     def get_mention_level(self, features, geo_dict):
         mt1 = self.check_mention_type(self.mention1, geo_dict)
@@ -246,6 +277,7 @@ class MentionPair:
 
     def check_create(self, features):
         features["CREATE"] = False
+        # features["CREATENUM"] = 0
         features["CREATOR"] = "None"
         features["CREATEE"] = "None"
         features["CREATEBY"] = "None"
@@ -255,11 +287,12 @@ class MentionPair:
 
         # some relative trigger verbs between mentions
         for i, word in enumerate(self.mid_words):
-            if self.mid_poss[i].startswith("VB"):
-                for trigger in triggers:
-                    if trigger in word.lower():
-                        features["CREATE"] = True
-                        break
+            # if self.mid_poss[i].startswith("VB"):
+            for trigger in triggers:
+                if trigger in word.lower():
+                    features["CREATE"] = True
+                    # features["CREATENUM"] += 1
+                    break
 
         if features["CREATE"]:
             ents = features["ET12"].split()
