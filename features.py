@@ -103,8 +103,8 @@ class MentionPair:
         # check invent relation
         self.check_create(features)
 
-        # check onwereship relation
-        self.check_own(features)
+        # check onwereship relation --> DECREASE PERFORMANCE
+        # self.check_own(features)
 
         # mention level relation --> DECREASE PERFORMANCE
         # self.get_mention_level(features, geo_dict)
