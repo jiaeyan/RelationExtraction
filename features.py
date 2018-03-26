@@ -172,12 +172,12 @@ class MentionPair:
         features["ML12"] = mt1 + " " + mt2
 
     def check_mention_type(self, mention, geo_dict):
-        words = self.clean_word(mention.word, geo_dict).split()
+        # words = self.clean_word(mention.word, geo_dict).split()
         pos = mention.pos.split()
 
-        if len(words) == 1 and pos[0] == "PRP":
+        if len(pos) == 1 and pos[0] == "PRP":
             return "PRONOUN"
-        elif words[0].istitle() or (len(words) > 1 and words[1].istitle()):
+        elif "NNP" in pos or "NNPS" in pos:
             return "NAME"
         else:
             return "NOMIAL"
