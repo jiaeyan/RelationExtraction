@@ -109,7 +109,7 @@ class MentionPair:
         # features["PAM1S"] = self.mention2.features["second_pos_after"]
 
         # combination of entity types
-        # features["ET12"] = self.mention1.entity + " " + self.mention2.entity
+        features["ET12"] = self.mention1.entity + " " + self.mention2.entity
 
         # combination of entity type and dependent word ---> DECREASE PERFORMANCE
         # features["ET1DW1"] = self.mention1.entity + " " + self.tree.leaves()[self.dep[self.mention1.span[0]][1]]
