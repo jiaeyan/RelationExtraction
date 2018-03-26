@@ -97,16 +97,16 @@ class MentionPair:
         features["BM1S"] = self.mention1.features["second_word_before"]
 
         # first and second pos before mention1
-        features["PBM1F"] = self.mention1.features["first_pos_before"]
-        features["PBM1S"] = self.mention1.features["second_pos_before"]
+        # features["PBM1F"] = self.mention1.features["first_pos_before"]
+        # features["PBM1S"] = self.mention1.features["second_pos_before"]
 
         # first and second words after mention2'
         features["AM1F"] = self.mention2.features["first_word_after"]
         features["AM1S"] = self.mention2.features["second_word_after"]
 
         # first and second pos after mention2'
-        features["PAM1F"] = self.mention2.features["first_pos_after"]
-        features["PAM1S"] = self.mention2.features["second_pos_after"]
+        # features["PAM1F"] = self.mention2.features["first_pos_after"]
+        # features["PAM1S"] = self.mention2.features["second_pos_after"]
 
         # combination of entity types
         features["ET12"] = self.mention1.entity + " " + self.mention2.entity
