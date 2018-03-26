@@ -233,13 +233,9 @@ class MentionPair:
         triggers = {"wife", "husband", "daughter", "son", "father", "mother", "grandfather", "grandmother", "uncle",
                     "aunt", "nephew", "niece", "sister", "brother", "cousin"}
         for word in self.mid_words:
-            for trigger in triggers:
-                if trigger in word.lower():
-                    features["RELATIVE"] = True
-                    break
-            # if word.lower() in triggers:
-            #     features["RELATIVE"] = True
-            #     break
+            if word.lower() in triggers:
+                features["RELATIVE"] = True
+                break
 
         # if two mentions share the same family name
         w = w1 & w2
