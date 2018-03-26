@@ -208,18 +208,19 @@ class MentionPair:
         features["RELATIVE"] = False
         features["FAMNAME"] = False
 
-        triggers = {"wife", "husband", "daughter", "son", "father", "mother", "grandfather", "grandmother", "uncle",
-                    "aunt", "nephew", "niece", "sister", "brother", "cousin"}
-        for word in self.mid_words:
-            if word.lower() in triggers:
-                features["RELATIVE"] = True
-                break
+        if features["ET12"] == "PER PER":
+            triggers = {"wife", "husband", "daughter", "son", "father", "mother", "grandfather", "grandmother", "uncle",
+                        "aunt", "nephew", "niece", "sister", "brother", "cousin"}
+            for word in self.mid_words:
+                if word.lower() in triggers:
+                    features["RELATIVE"] = True
+                    break
 
-        w = w1 & w2
-        for word in w:
-            if word in names:
-                features["FAMNAME"] = True
-                break
+            w = w1 & w2
+            for word in w:
+                if word in names:
+                    features["FAMNAME"] = True
+                    break
 
 
 
