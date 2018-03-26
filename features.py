@@ -96,7 +96,7 @@ class MentionPair:
         self.check_geo_info(features, geo_dict)
 
         # mention level relation --> DECREASE PERFORMANCE
-        self.get_mention_level(features, geo_dict)
+        # self.get_mention_level(features, geo_dict)
 
         # mention inclusions --> DECREASE PERFORMANCE
         # features["M1>M2"], features["M2>M1"] = self.check_mention_inclusion()
