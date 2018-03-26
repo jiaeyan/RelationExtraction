@@ -175,7 +175,7 @@ class MentionPair:
         words = self.clean_word(mention.word, geo_dict).split()
         pos = mention.pos.split()
 
-        if len(words) == 1 and pos[0].startswith("PRP"):
+        if len(words) == 1 and pos[0] == "PRP":
             return "PRONOUN"
         elif words[0].istitle() or (len(words) > 1 and words[1].istitle()):
             return "NAME"
