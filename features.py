@@ -102,6 +102,9 @@ class MentionPair:
         # check invent relation
         self.check_create(features)
 
+        # check onwereship relation
+        self.check_own(features)
+
         # mention level relation --> DECREASE PERFORMANCE
         # self.get_mention_level(features, geo_dict)
 
@@ -253,8 +256,10 @@ class MentionPair:
 
     def check_own(self, features):
         features["OWN"] = False
-        features["OWNER"] = False
-        features["OWNBY"] = features["OWN"] and features["OWNER"]
+        features["OWNER"] = "None"
+        features["OWNEE"] = "None"
+        features["OWNBY"] = "None"
+        features["BYOWN"] = "None"
 
         triggers = {"found", "run", "ran", "start", "own", "use", "consume", "buil", "manage", "support", "control",
                     "acquir", "buy", "bought", "possess", "lead", "led", "govern", "oversee", "supervise", "administer",
@@ -267,8 +272,16 @@ class MentionPair:
                     features["OWN"] = True
                     break
 
-        if self.mid_words[-1] == "by":
-            features["OWNER"] = True
+        if features["OWN"]:
+            ents = features["ET12"].split()
+            if "by" in self.mid_words[-1]:
+                features["OWNER"] = ents[1]
+                features["OWNEE"] = ents[0]
+                features["OWNBY"] = features["ET12"]
+            else:
+                features["OWNER"] = ents[0]
+                features["OWNEE"] = ents[1]
+                features["BYOWN"] = features["ET12"]
 
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word
