@@ -133,7 +133,7 @@ class MentionPair:
         self.check_geo_info(features, geo_dict)
 
         # check family relation
-        # self.check_family(features, geo_dict, names)
+        self.check_family(features, geo_dict, names)
 
         # check invent relation
         # self.check_create(features)
