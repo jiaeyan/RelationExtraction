@@ -15,7 +15,7 @@ def main():
     parser.add_argument('--task', type=str, help='specify the task, use train/test/dev')
     args = parser.parse_args()
 
-    print("Generating {} file...".format(args.task))
+    print("Generating {} feature file...".format(args.task))
 
     if args.task == "train":
         pairs = get_pairs("data/rel-trainset.gold")

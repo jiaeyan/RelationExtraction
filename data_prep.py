@@ -5,7 +5,6 @@ from collections import defaultdict
 from nltk import ParentedTree
 from features import Mention, MentionPair
 
-
 pos_data = "data/postagged-files"
 parse_data = "data/parsed-files"
 geo_data = "data/CountriesToCities.json"
@@ -127,9 +126,6 @@ def read_name_file(data_file, names):
 
 # pairs = get_pairs("data/rel-trainset.gold")
 # print(pairs[0].mention2.pos)
-
-
-
 def convert_to_dep(parse_data, dep_data):
     fns = os.listdir(parse_data)
     os.chdir('stanford-parser')
