@@ -1,17 +1,27 @@
 import os
-from features import Mention, MentionPair
-from nltk import ParentedTree
 import re
+import json
+from collections import defaultdict
+from nltk import ParentedTree
+from features import Mention, MentionPair
 
 
 pos_data = "data/postagged-files"
 parse_data = "data/parsed-files"
+geo_data = "data/CountriesToCities.json"
+last_name_data = "data/names/all_last_names.txt"
+male_first_data = "data/names/male_first_names.txt"
+female_first_data = "data/names/female_first_names.txt"
+dep_data = 'data/dep-files'
 
 
 def get_pairs(data):
     pos_dict = get_pos_dict(pos_data)
     parse_dict = get_parse_dict(parse_data)
+    geo_dict = get_geo_dict(geo_data)
+    names = get_name_dict([last_name_data, male_first_data, female_first_data])
     entity_pairs = []
+
     with open(data, 'r') as f:
         for line in f:
             fields = line.strip().split()
@@ -24,7 +34,7 @@ def get_pairs(data):
             mention1 = wrap_mention(fields, word_list, pos_list, tree, span_id1=3, span_id2=4, word_id=7, ent_id=5)
             mention2 = wrap_mention(fields, word_list, pos_list, tree, span_id1=9, span_id2=10, word_id=13, ent_id=11)
 
-            entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree, word_list))
+            entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree, word_list, pos_list, geo_dict, names))
 
     return entity_pairs
 
@@ -65,13 +75,65 @@ def get_parse_dict(parse_data):
                     parse_dict[fn[:21]].append(line)
     return parse_dict
 
+
+def get_geo_dict(geo_data):
+    geo_dict = defaultdict(set)
+    mapping = json.load(open(geo_data), encoding="utf8")
+    for country, cities in mapping.items():
+        country = country.strip().replace("-", " ")
+        for city in cities:
+            geo_dict[country].add(city.strip().replace("-", " "))
+
+        # make "United States" to "US", "U.S.", "the US" and "the U.S."
+        if country.istitle():
+            country_short = "".join([word[0] for word in country.split()])
+            if len(country_short) > 1:
+                country_short_dot = ".".join(list(country_short)) + "."
+                det_country = "the " + country_short
+                det_country_dot = "the " + country_short_dot
+
+                geo_dict[country_short] = geo_dict[country]
+                geo_dict[country_short_dot] = geo_dict[country]
+                geo_dict[det_country] = geo_dict[country]
+                geo_dict[det_country_dot] = geo_dict[country]
+
+    return geo_dict
+
+
+def get_name_dict(data_files):
+    names = set()
+    for data_file in data_files:
+        read_name_file(data_file, names)
+    return names
+
+
+def read_name_file(data_file, names):
+    with open(data_file, "r") as f:
+        for line in f:
+            name = line.strip().split()[0].title()
+            names.add(name)
+
+
 # pos_dict = get_pos_dict(pos_data)
 # print(pos_dict["APW20001001.2021.0521"][3])
 
+# ner = defaultdict(int)
 # with open("data/rel-trainset.gold", 'r') as f:
 #     for line in f:
 #         fields = line.strip().split()
-#         print(fields)
+#         ner[fields[0]] += 1
+#         # ner[fields[11]] += 1
+# print(sorted(ner.items(), key=lambda x: x[1], reverse=True))
 
 # pairs = get_pairs("data/rel-trainset.gold")
 # print(pairs[0].mention2.pos)
+
+
+
+def convert_to_dep(parse_data, dep_data):
+    fns = os.listdir(parse_data)
+    os.chdir('stanford-parser')
+    for fn in fns:
+        fn_out = fn[:21]
+        os.system(
+            "java -cp stanford-parser.jar edu.stanford.nlp.trees.ud.UniversalDependenciesConverter -treeFile {0} -enhanced++ > {1}.conllu".format("../"+os.path.join(parse_data, fn), "../"+os.path.join(dep_data, fn_out)))
