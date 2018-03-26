@@ -245,7 +245,8 @@ class MentionPair:
                 break
 
     def check_create(self, features):
-        features["CREATE"] = False
+        # features["CREATE"] = False
+        create = False
         features["CREATOR"] = "None"
         features["CREATEE"] = "None"
         features["CREATEBY"] = "None"
@@ -258,10 +259,12 @@ class MentionPair:
             # if self.mid_poss[i].startswith("VB"):
             for trigger in triggers:
                 if trigger in word.lower():
-                    features["CREATE"] = True
+                    # features["CREATE"] = True
+                    create = True
                     break
 
-        if features["CREATE"]:
+        # if features["CREATE"]:
+        if create:
             ents = features["ET12"].split()
             features["CREATOR"] = ents[0]
             features["CREATEE"] = ents[1]
