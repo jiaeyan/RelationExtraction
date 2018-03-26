@@ -137,8 +137,11 @@ class MentionPair:
         # check family relation
         self.check_family(features, geo_dict, names)
 
+        # get wordnet information
+        self.get_wordnet_info(features)
+
         # check if words are in the same phrases
-        self.check_shared_phrase(features)
+        # self.check_shared_phrase(features)
 
         # check invent relation --> DECREASE PERFORMANCE
         # self.check_create(features)
@@ -388,7 +391,6 @@ class MentionPair:
                 for lemma in syn.lemmas():
                     syns.add(lemma.name())
         return syns
-
 
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word
