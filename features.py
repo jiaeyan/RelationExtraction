@@ -261,7 +261,7 @@ class MentionPair:
         features["OWNBY"] = "None"
         features["BYOWN"] = "None"
 
-        triggers = {"found", "run", "ran", "start", "own", "use", "consume", "buil", "manage", "support", "control",
+        triggers = {"found", "run", "ran", "own", "consume", "buil", "manage", "support", "control",
                     "acquir", "buy", "bought", "possess", "lead", "led", "govern", "oversee", "supervise", "administer",
                     "utiliz", "direct"}
 
