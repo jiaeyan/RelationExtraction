@@ -231,9 +231,11 @@ class MentionPair:
 
     def check_create(self, features):
         features["CREATE"] = False
+        features["CREATOR"] = False
+        features["CREATEBY"] = features["CREATE"] and features["CREATOR"]
 
         triggers = {"creat", "buil", "made", "make", "mak", "develop", "construct", "did", "finish", "draw", "drew",
-                    "coin", "writ", "wrote", "invent", "manufacture"}
+                    "coin", "writ", "wrote", "invent", "manufactur"}
 
         # some relative trigger verbs between mentions
         for word in self.mid_words:
@@ -242,10 +244,26 @@ class MentionPair:
                     features["CREATE"] = True
                     break
 
+        if "by" in self.mid_words:
+            features["CREATOR"] = True
+
     def check_own(self, features):
         features["OWN"] = False
+        features["OWNER"] = False
+        features["OWNBY"] = features["OWN"] and features["OWNER"]
 
-        triggers = {"found", "run", "ran", "start", "own", "use", "consume", "buil", "manage"}
+        triggers = {"found", "run", "ran", "start", "own", "use", "consume", "buil", "manage", "support", "control",
+                    "acquir", "buy", "bought"}
+
+        # some relative trigger verbs between mentions
+        for word in self.mid_words:
+            for trigger in triggers:
+                if trigger in word.lower():
+                    features["OWN"] = True
+                    break
+
+        if "by" in self.mid_words:
+            features["OWNER"] = True
 
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word
