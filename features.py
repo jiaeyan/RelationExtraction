@@ -109,6 +109,8 @@ class MentionPair:
         # features["PAM1S"] = self.mention2.features["second_pos_after"]
 
         # combination of entity types
+        features["ET1"] = self.mention1.entity
+        features["ET2"] = self.mention2.entity
         features["ET12"] = self.mention1.entity + " " + self.mention2.entity
 
         # combination of entity type and dependent word ---> DECREASE PERFORMANCE
@@ -128,7 +130,7 @@ class MentionPair:
         self.get_words_pos_between(features)
 
         # geo checking between mentions
-        self.check_geo_info(features, geo_dict)
+        # self.check_geo_info(features, geo_dict)
 
         # check family relation
         # self.check_family(features, geo_dict, names)
