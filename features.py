@@ -211,23 +211,30 @@ class MentionPair:
         features["RELATIVE"] = False
         features["FAMNAME"] = False
 
-        if features["ET12"] == "PER PER":
-            # some relative trigger nouns between mentions
-            triggers = {"wife", "husband", "daughter", "son", "father", "mother", "grandfather", "grandmother", "uncle",
-                        "aunt", "nephew", "niece", "sister", "brother", "cousin"}
-            for word in self.mid_words:
-                if word.lower() in triggers:
-                    features["RELATIVE"] = True
-                    break
+        # some relative trigger nouns between mentions
+        triggers = {"wife", "husband", "daughter", "son", "father", "mother", "grandfather", "grandmother", "uncle",
+                    "aunt", "nephew", "niece", "sister", "brother", "cousin"}
+        for word in self.mid_words:
+            if word.lower() in triggers:
+                features["RELATIVE"] = True
+                break
 
-            # if two mentions share the same family name
-            w = w1 & w2
-            for word in w:
-                if word in names:
-                    features["FAMNAME"] = True
-                    break
+        # if two mentions share the same family name
+        w = w1 & w2
+        for word in w:
+            if word in names:
+                features["FAMNAME"] = True
+                break
 
+    def check_create(self, features):
+        features["CREATE"] = False
 
+        triggers = {"creat", "buil", "made", "make", "develop", "construct", "did", "finish", "draw", "drew", "coin"}
+
+        for word in self.mid_words:
+            for trigger in triggers:
+                if trigger in word.lower():
+                    features["CREATE"] = True
 
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word
