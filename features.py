@@ -234,8 +234,8 @@ class MentionPair:
         features["CREATOR"] = False
         features["CREATEBY"] = features["CREATE"] and features["CREATOR"]
 
-        triggers = {"creat", "buil", "made", "make", "mak", "develop", "construct", "did", "finish", "draw", "drew",
-                    "coin", "writ", "wrote", "invent", "manufactur"}
+        triggers = {"creat", "buil", "made", "make", "mak", "develop", "construct", "draw", "drew",
+                    "coin", "writ", "wrote", "invent", "manufactur", "generat", "produc", "foster", "fabricate"}
 
         # some relative trigger verbs between mentions
         for word in self.mid_words:
@@ -253,7 +253,8 @@ class MentionPair:
         features["OWNBY"] = features["OWN"] and features["OWNER"]
 
         triggers = {"found", "run", "ran", "start", "own", "use", "consume", "buil", "manage", "support", "control",
-                    "acquir", "buy", "bought"}
+                    "acquir", "buy", "bought", "possess", "lead", "led", "govern", "oversee", "supervise", "administer",
+                    "utiliz", "direct"}
 
         # some relative trigger verbs between mentions
         for word in self.mid_words:
