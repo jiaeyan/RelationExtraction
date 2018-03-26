@@ -374,8 +374,8 @@ class MentionPair:
 
         if len(synset1) == 0 or len(synset2) == 0:
             return 0
-        
-        best = max(wn.path_similarity(s1, s2) or 0 for s1, s2 in
+
+        best = max(wn.path_similarity(s1, s2) for s1, s2 in
                    product(synset1, synset2))
         return best
 
