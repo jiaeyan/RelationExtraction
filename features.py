@@ -353,15 +353,15 @@ class MentionPair:
         # print leaf_index1, leaf_index2
 	min_tree = self.tree[self.tree.treeposition_spanning_leaves(self.mention1.span[0], self.mention2.span[0])]
         while min_tree is not None and not isinstance(min_tree, str):
-	    if min_tree.label() == "VP" and sameVP == 'False':
-                sameVP = "True " + self.mention1.entity + " " + self.mention2.entity
-            elif min_tree.label() == "NP" and sameNP == 'False':
+	    # if min_tree.label() == "VP" and sameVP == 'False':
+            #    sameVP = "True " + self.mention1.entity + " " + self.mention2.entity
+            if min_tree.label() == "NP" and sameNP == 'False':
                 sameNP = "True " + self.mention1.entity + " " + self.mention2.entity
-            elif min_tree.label() == "PP" and samePP == 'False':
-                samePP = "True " + self.mention1.entity + " " + self.mention2.entity
+            #elif min_tree.label() == "PP" and samePP == 'False':
+            #    samePP = "True " + self.mention1.entity + " " + self.mention2.entity
             min_tree = min_tree.parent()
-
-        features['sameVP'] = sameVP
+	# Only having NPs helped performance
+        # features['sameVP'] = sameVP 
         features['sameNP'] = sameNP
-        features['samePP'] = samePP
+        # features['samePP'] = samePP
 
