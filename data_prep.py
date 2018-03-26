@@ -44,7 +44,7 @@ def wrap_mention(fields, word_list, pos_list, tree, span_id1=0, span_id2=0, word
     span = [int(fields[span_id1]), int(fields[span_id2])]
     pos = " ".join(pos_list[span[0]: span[1]])
     tree_pos = tree.leaf_treeposition(span[0])[:-1]
-    mention = Mention(fields[word_id], fields[ent_id], pos, span, word_list, tree_pos)
+    mention = Mention(fields[word_id], fields[ent_id], pos, span, word_list, pos_list, tree_pos)
     return mention
 
 
