@@ -109,6 +109,8 @@ class MentionPair:
         # features["PAM1S"] = self.mention2.features["second_pos_after"]
 
         # combination of entity types
+        features["ET1"] = self.mention1.entity
+        features["ET2"] = self.mention2.entity
         features["ET12"] = self.mention1.entity + " " + self.mention2.entity
 
         # combination of entity type and dependent word ---> DECREASE PERFORMANCE
@@ -133,8 +135,11 @@ class MentionPair:
         # check family relation
         self.check_family(features, geo_dict, names)
 
-        # check invent relation
-        self.check_create(features)
+        # check if words are in the same phrases
+        self.check_shared_phrases(features)
+
+        # check invent relation --> DECREASE PERFORMANCE
+        # self.check_create(features)
 
         # check onwereship relation --> DECREASE PERFORMANCE
         # self.check_own(features)
@@ -154,13 +159,14 @@ class MentionPair:
         # features["siblings"] = str(self.tree[self.mention1.tree_pos].parent() == self.tree[self.mention2.tree_pos].parent())
         # probably not useful only occurs positively 53 times in training mostly no_rel
         # features["modifies"] = str(features['siblings'] == "True" and self.head(self.mention1.pos) and not self.head(self.mention2.pos))
-        features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
+        # features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
 
         # features["ancestor"] = self.tree[self.mention2.tree_pos] in self.tree[self.mention1.tree_pos].subtrees()
         # features["descendant"] =
 
 
         return features
+
 
     def get_words_pos_between(self, features):
         start = self.mention1.span[1]
@@ -330,8 +336,31 @@ class MentionPair:
                 features["OWNEE"] = ents[1]
                 features["BYOWN"] = features["ET12"]
 
+    def get_wordnet_info(self, features):
+        hm1 = features["HM1"]
+        hm2 = features["HM2"]
+
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word
 
     def head(self, pos):
         return pos.startswith("N") or pos.startswith("VB") or pos is "IN"
+
+    def check_shared_phrase(self, features):
+        sameVP, sameNP, samePP = 'False','False','False'
+        leaf_index1 = self.tree.leaves().index(self.tree[self.mention1.treepos][0])
+        leaf_index2 = self.tree.leaves().index(self.tree[self.mention2.treepos][0])
+        min_tree = self.tree.treeposition_spanning_leaves(leaf_index1, leaf_index2)
+        while min_tree is not None:
+            if min_tree.label() == "VP" and sameVP == 'False':
+                sameVP = "True " + self.mention1.entity + " " + self.mention2.entity
+            elif min_tree.label() == "NP" and sameNP == 'False':
+                sameNP = "True " + self.mention1.entity + " " + self.mention2.entity
+            elif min_tree.label() == "PP" and samePP == 'False':
+                samePP = "True " + self.mention1.entity + " " + self.mention2.entity
+            min_tree = min_tree.parent()
+
+        features['sameVP'] = sameVP
+        features['sameNP'] = sameNP
+        features['samePP'] = samePP
+
