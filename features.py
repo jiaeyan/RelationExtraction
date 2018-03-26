@@ -154,7 +154,7 @@ class MentionPair:
         # features["siblings"] = str(self.tree[self.mention1.tree_pos].parent() == self.tree[self.mention2.tree_pos].parent())
         # probably not useful only occurs positively 53 times in training mostly no_rel
         # features["modifies"] = str(features['siblings'] == "True" and self.head(self.mention1.pos) and not self.head(self.mention2.pos))
-        features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
+        # features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
 
         # features["ancestor"] = self.tree[self.mention2.tree_pos] in self.tree[self.mention1.tree_pos].subtrees()
         # features["descendant"] =
@@ -169,39 +169,80 @@ class MentionPair:
 
         features["WBF"] = "None"
         features["WBL"] = "None"
+        features["WBSF"] = "None"
+        features["WBSL"] = "None"
         features["WBO"] = "None"
         features["WBFL"] = "None"
         features["WBNULL"] = False
 
-        # features["PBF"] = "None"
-        # features["PBL"] = "None"
-        # features["PBO"] = "None"
-        # features["PBFL"] = "None"
-        # features["PBNULL"] = False
+        if between_range > 4:
+            features["WBF"] = self.word_list[start]
+            features["WBL"] = self.word_list[end]
+            features["WBSF"] = self.word_list[start + 1]
+            features["WBSL"] = self.word_list[end - 1]
+            features["WBO"] = " ".join(self.word_list[start + 2: end - 1])
 
-        if between_range > 2:
+        elif between_range == 4:
+            features["WBF"] = self.word_list[start]
+            features["WBL"] = self.word_list[end]
+            features["WBSF"] = self.word_list[start + 1]
+            features["WBSL"] = self.word_list[end - 1]
+
+        elif between_range == 3:
             features["WBF"] = self.word_list[start]
             features["WBL"] = self.word_list[end]
             features["WBO"] = " ".join(self.word_list[start + 1: end])
-
-            # features["PBF"] = self.pos_list[start]
-            # features["PBL"] = self.pos_list[end]
-            # features["PBO"] = " ".join(self.pos_list[start + 1: end])
 
         elif between_range == 2:
             features["WBF"] = self.word_list[start]
             features["WBL"] = self.word_list[end]
 
-            # features["PBF"] = self.pos_list[start]
-            # features["PBL"] = self.pos_list[end]
-
         elif between_range == 1:
             features["WBFL"] = self.word_list[start]
-            # features["PBFL"] = self.pos_list[start]
 
         else:
             features["WBNULL"] = True
-            # features["PBNULL"] = True
+
+    # def get_words_pos_between(self, features):
+    #     start = self.mention1.span[1]
+    #     end = self.mention2.span[0] - 1
+    #     between_range = end - start + 1
+    #
+    #     features["WBF"] = "None"
+    #     features["WBL"] = "None"
+    #     features["WBO"] = "None"
+    #     features["WBFL"] = "None"
+    #     features["WBNULL"] = False
+    #
+    #     # features["PBF"] = "None"
+    #     # features["PBL"] = "None"
+    #     # features["PBO"] = "None"
+    #     # features["PBFL"] = "None"
+    #     # features["PBNULL"] = False
+    #
+    #     if between_range > 2:
+    #         features["WBF"] = self.word_list[start]
+    #         features["WBL"] = self.word_list[end]
+    #         features["WBO"] = " ".join(self.word_list[start + 1: end])
+    #
+    #         # features["PBF"] = self.pos_list[start]
+    #         # features["PBL"] = self.pos_list[end]
+    #         # features["PBO"] = " ".join(self.pos_list[start + 1: end])
+    #
+    #     elif between_range == 2:
+    #         features["WBF"] = self.word_list[start]
+    #         features["WBL"] = self.word_list[end]
+    #
+    #         # features["PBF"] = self.pos_list[start]
+    #         # features["PBL"] = self.pos_list[end]
+    #
+    #     elif between_range == 1:
+    #         features["WBFL"] = self.word_list[start]
+    #         # features["PBFL"] = self.pos_list[start]
+    #
+    #     else:
+    #         features["WBNULL"] = True
+    #         # features["PBNULL"] = True
 
     def check_mention_inclusion(self):
         span1 = self.mention1.span
