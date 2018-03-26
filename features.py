@@ -47,20 +47,22 @@ class Mention:
 
 class MentionPair:
 
-    def __init__(self, mention1, mention2, rel, tree, word_list, geo_dict):
+    def __init__(self, mention1, mention2, rel, tree, word_list, geo_dict, names):
         self.mention1 = mention1
         self.mention2 = mention2
         self.rel = rel
         self.tree = tree
         self.word_list = word_list
         # self.headed_tree = self.get_heads()
-        self.features = self.get_features(geo_dict)
+        self.features = self.get_features(geo_dict, names)
+
+        self.mid_words = word_list[mention1.span[1]: mention2.span[0]]
 
     def get_heads(self):
 
         return 0
 
-    def get_features(self, geo_dict):
+    def get_features(self, geo_dict, names):
         features = {}
 
         # word bag of the mention
@@ -94,6 +96,9 @@ class MentionPair:
 
         # geo checking between mentions
         self.check_geo_info(features, geo_dict)
+
+        # check family relation
+        self.check_family(features, geo_dict, names)
 
         # mention level relation --> DECREASE PERFORMANCE
         # self.get_mention_level(features, geo_dict)
@@ -197,9 +202,27 @@ class MentionPair:
         else:
             return "NOMIAL"
 
-    def check_family(self, geo_dict):
-        w1 = self.clean_word(self.mention1.word, geo_dict)
-        w2 = self.clean_word(self.mention2.word, geo_dict)
+    def check_family(self, features, geo_dict, names):
+        w1 = set(self.clean_word(self.mention1.word, geo_dict).split())
+        w2 = set(self.clean_word(self.mention2.word, geo_dict).split())
+
+        features["RELATIVE"] = False
+        features["FAMNAME"] = False
+
+        triggers = {"wife", "husband", "daughter", "son", "father", "mother", "grandfather", "grandmother", "uncle",
+                    "aunt", "nephew", "niece", "sister", "brother", "cousin"}
+        for word in self.mid_words:
+            if word.lower() in triggers:
+                features["RELATIVE"] = True
+                break
+
+        w = w1 & w2
+        for word in w:
+            if word in names:
+                features["FAMNAME"] = True
+                break
+
+
 
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word

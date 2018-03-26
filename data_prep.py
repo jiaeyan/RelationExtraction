@@ -17,7 +17,7 @@ def get_pairs(data):
     pos_dict = get_pos_dict(pos_data)
     parse_dict = get_parse_dict(parse_data)
     geo_dict = get_geo_dict(geo_data)
-    # names = get_name_dict([last_name_data, male_first_data, female_first_data])
+    names = get_name_dict([last_name_data, male_first_data, female_first_data])
     entity_pairs = []
 
     with open(data, 'r') as f:
@@ -32,7 +32,7 @@ def get_pairs(data):
             mention1 = wrap_mention(fields, word_list, pos_list, tree, span_id1=3, span_id2=4, word_id=7, ent_id=5)
             mention2 = wrap_mention(fields, word_list, pos_list, tree, span_id1=9, span_id2=10, word_id=13, ent_id=11)
 
-            entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree, word_list, geo_dict))
+            entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree, word_list, geo_dict, names))
 
     return entity_pairs
 
