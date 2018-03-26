@@ -1,3 +1,5 @@
+from itertools import product
+
 from nltk import ParentedTree
 from nltk.corpus import wordnet as wn
 
@@ -135,8 +137,11 @@ class MentionPair:
         # check family relation
         self.check_family(features, geo_dict, names)
 
+        # get wordnet information
+        self.get_wordnet_info(features)
+
         # check if words are in the same phrases
-        self.check_shared_phrase(features)
+        # self.check_shared_phrase(features)
 
         # check invent relation --> DECREASE PERFORMANCE
         # self.check_create(features)
@@ -337,8 +342,58 @@ class MentionPair:
                 features["BYOWN"] = features["ET12"]
 
     def get_wordnet_info(self, features):
-        hm1 = features["HM1"]
-        hm2 = features["HM2"]
+        hm1 = self.wn_get_stem(features["HM1"].lower())
+        hm2 = self.wn_get_stem(features["HM2"].lower())
+
+        hyper1 = self.get_hypernyms(hm1)
+        hyper2 = self.get_hypernyms(hm2)
+        syn1 = self.get_synonyms(hm1)
+        syn2 = self.get_synonyms(hm2)
+
+        features["HAS"] = False
+        features["IS"] = False
+        features["SAME"] = False
+        # features["SIMILARITY"] = self.get_similarity(hm1, hm2)
+
+        if hm1 in syn2 or hm2 in syn1:
+            features["SAME"] = True
+        elif hm1 in hyper2:
+            features["HAS"] = True
+        elif hm2 in hyper1:
+            features["IS"] = True
+
+    def wn_get_stem(self, word):
+        for s in wn.synsets(word):
+            for lemma in s.lemmas():
+                return lemma.name()
+        return word
+
+    def get_similarity(self, word1, word2):
+        synset1 = wn.synsets(word1)
+        synset2 = wn.synsets(word2)
+
+        if len(synset1) == 0 or len(synset2) == 0:
+            return 0
+
+        best = max(wn.path_similarity(s1, s2) for s1, s2 in
+                   product(synset1, synset2))
+        return best
+
+    def get_hypernyms(self, word):
+        hypers = set()
+        for ss in wn.synsets(word):
+            for hyper in ss.hypernyms():
+                for lemma in hyper.lemmas():
+                    hypers.add(lemma.name())
+        return hypers
+
+    def get_synonyms(self, word):
+        syns = set()
+        for ss in wn.synsets(word):
+            for syn in ss.hypernyms():
+                for lemma in syn.lemmas():
+                    syns.add(lemma.name())
+        return syns
 
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word
@@ -364,4 +419,3 @@ class MentionPair:
         # features['sameVP'] = sameVP 
         features['sameNP'] = sameNP
         # features['samePP'] = samePP
-
