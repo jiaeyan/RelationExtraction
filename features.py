@@ -353,7 +353,7 @@ class MentionPair:
         features["HAS"] = False
         features["IS"] = False
         features["SAME"] = False
-        features["SIMILARITY"] = self.get_similarity(hm1, hm2)
+        # features["SIMILARITY"] = self.get_similarity(hm1, hm2)
 
         if hm1 in syn2 or hm2 in syn1:
             features["SAME"] = True
