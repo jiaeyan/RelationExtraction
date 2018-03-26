@@ -1,5 +1,5 @@
 from nltk import ParentedTree
-
+from nltk.corpus import wordnet as wn
 
 class Mention:
 
