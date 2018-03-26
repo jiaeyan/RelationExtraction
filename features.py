@@ -209,6 +209,7 @@ class MentionPair:
         features["FAMNAME"] = False
 
         if features["ET12"] == "PER PER":
+            # some relative trigger nouns between mentions
             triggers = {"wife", "husband", "daughter", "son", "father", "mother", "grandfather", "grandmother", "uncle",
                         "aunt", "nephew", "niece", "sister", "brother", "cousin"}
             for word in self.mid_words:
@@ -216,6 +217,7 @@ class MentionPair:
                     features["RELATIVE"] = True
                     break
 
+            # if two mentions share the same family name
             w = w1 & w2
             for word in w:
                 if word in names:
