@@ -231,6 +231,9 @@ class MentionPair:
 
     def check_create(self, features):
         features["CREATE"] = False
+        features["CREATOR"] = "None"
+        features["CREATEE"] = "None"
+        features["CREATEBY"] = "None"
 
         triggers = {"creat", "buil", "made", "make", "mak", "develop", "construct", "draw", "drew",
                     "coin", "writ", "wrote", "invent", "manufactur", "generat", "produc", "foster", "fabricat"}
@@ -241,6 +244,12 @@ class MentionPair:
                 if trigger in word.lower():
                     features["CREATE"] = True
                     break
+
+        if features["CREATE"]:
+            ents = features["ET12"].split()
+            features["CREATOR"] = ents[0]
+            features["CREATEE"] = ents[1]
+            features["CREATEBY"] = features["ET12"]
 
     def check_own(self, features):
         features["OWN"] = False
