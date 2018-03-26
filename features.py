@@ -47,20 +47,18 @@ class Mention:
 
 class MentionPair:
 
-    def __init__(self, mention1, mention2, rel, tree, word_list, pos_list, geo_dict, names):
+    def __init__(self, mention1, mention2, rel, tree, dep, word_list, pos_list, geo_dict, names):
         self.mention1 = mention1
         self.mention2 = mention2
         self.rel = rel
         self.tree = tree
+        self.dep = dep
         self.word_list = word_list
         self.mid_words = word_list[mention1.span[1]: mention2.span[0]]
         self.mid_poss = pos_list[mention1.span[1]: mention2.span[0]]
         # self.headed_tree = self.get_heads()
         self.features = self.get_features(geo_dict, names)
 
-    def get_heads(self):
-
-        return 0
 
     def get_features(self, geo_dict, names):
         features = {}
@@ -90,6 +88,19 @@ class MentionPair:
 
         # combination of entity types
         features["ET12"] = self.mention1.entity + " " + self.mention2.entity
+
+        # combination of entity type and dependent word
+        features["ET1DW1"] = self.mention1.entity + " " + self.word_list[self.dep[self.mention1.span[0]][1]]
+        features["ET2DW2"] = self.mention2.entity + " " + self.word_list[self.dep[self.mention2.span[0]][1]]
+
+        # combination of head word and dependent word
+        features["H1DW1"] = self.mention1.features["head"] + " " + self.word_list[self.dep[self.mention1.span[0]][1]]
+        features["H2DW2"] = self.mention1.features["head"] + " " + self.word_list[self.dep[self.mention1.span[0]][1]]
+
+        # combination of ET12 and if they are in the same (type of) phrase
+        # features['ET12SameNP'] = 0
+        # features['ET12SamePP'] = 0
+        # features['ET12SameVP'] = 0
 
         # words between mention1 and mention2, features["#WB"]
         self.get_words_between(features)

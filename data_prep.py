@@ -17,6 +17,7 @@ dep_data = 'data/dep-files'
 def get_pairs(data):
     pos_dict = get_pos_dict(pos_data)
     parse_dict = get_parse_dict(parse_data)
+    dep_dict = get_dep_dict(dep_data)
     geo_dict = get_geo_dict(geo_data)
     names = get_name_dict([last_name_data, male_first_data, female_first_data])
     entity_pairs = []
@@ -27,13 +28,14 @@ def get_pairs(data):
             fn = fields[1]
             sent_id = int(fields[2])
             tree = parse_dict[fn][sent_id]
+            dep = dep_dict[fn][sent_id]
             pos_list = [pair[-1] for pair in pos_dict[fn][sent_id]]
             word_list = [pair[0] for pair in pos_dict[fn][sent_id]]
 
             mention1 = wrap_mention(fields, word_list, pos_list, tree, span_id1=3, span_id2=4, word_id=7, ent_id=5)
             mention2 = wrap_mention(fields, word_list, pos_list, tree, span_id1=9, span_id2=10, word_id=13, ent_id=11)
 
-            entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree, word_list, pos_list, geo_dict, names))
+            entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree, dep, word_list, pos_list, geo_dict, names))
 
     return entity_pairs
 
@@ -73,6 +75,27 @@ def get_parse_dict(parse_data):
                     line = ParentedTree.fromstring(line)
                     parse_dict[fn[:21]].append(line)
     return parse_dict
+
+
+def get_dep_dict(dep_data):
+    fns = os.listdir(dep_data)
+    dep_dict = {}
+    for fn in fns:
+        dep_dict[fn[:21]] = []
+        with open(os.path.join(dep_data, fn)) as f:
+            sent = []
+            for line in f:
+                if line is '\n':
+                    dep_dict[fn[:21]].append(sent)
+                    sent = []
+                else:
+                    line = line.split()
+                    if int(line[0]) == 1:
+                        sent.append((0, -1, 'NONE'))
+                    # (word#, dep_word#, relation)
+                    sent.append((int(line[0]), int(line[6]), line[7]))
+
+
 
 
 def get_geo_dict(geo_data):
@@ -126,6 +149,7 @@ def read_name_file(data_file, names):
 
 # pairs = get_pairs("data/rel-trainset.gold")
 # print(pairs[0].mention2.pos)
+
 def convert_to_dep(parse_data, dep_data):
     fns = os.listdir(parse_data)
     os.chdir('stanford-parser')
