@@ -362,7 +362,6 @@ class MentionPair:
         elif hm2 in hyper1:
             features["IS"] = True
 
-
     def wn_get_stem(self, word):
         for s in wn.synsets(word):
             for lemma in s.lemmas():
@@ -372,6 +371,10 @@ class MentionPair:
     def get_similarity(self, word1, word2):
         synset1 = wn.synsets(word1)
         synset2 = wn.synsets(word2)
+
+        if len(synset1) == 0 or len(synset2) == 0:
+            return 0
+        
         best = max(wn.path_similarity(s1, s2) or 0 for s1, s2 in
                    product(synset1, synset2))
         return best
