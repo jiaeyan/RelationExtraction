@@ -95,16 +95,17 @@ class MentionPair:
         # geo checking between mentions
         self.check_geo_info(features, geo_dict)
 
-        # mention level relation
+        # mention level relation --> DECREASE PERFORMANCE
         self.get_mention_level(features, geo_dict)
 
-        # mention inclusions
+        # mention inclusions --> DECREASE PERFORMANCE
         # features["M1>M2"], features["M2>M1"] = self.check_mention_inclusion()
 
-
+        # POS information  --> DECREASE PERFORMANCE
         # features["pos1"] = self.mention1.pos
         # features["pos2"] = self.mention2.pos
         # features["comb_pos"] = self.mention1.pos + " " + self.mention2.pos
+
         # issue in sents with parentheses where POS / word index are not equivalent to word index in tree
         # features["siblings"] = str(self.tree[self.mention1.tree_pos].parent() == self.tree[self.mention2.tree_pos].parent())
         # probably not useful only occurs positively 53 times in training mostly no_rel
@@ -179,8 +180,10 @@ class MentionPair:
             return "PRONOUN"
         elif "NNP" in pos or "NNPS" in pos:
             return "NAME"
-        else:
+        elif "NN" in pos or "NNS" in pos:
             return "NOMIAL"
+        else:
+            return "NONE"
 
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word
