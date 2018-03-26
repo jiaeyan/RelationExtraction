@@ -47,13 +47,14 @@ class Mention:
 
 class MentionPair:
 
-    def __init__(self, mention1, mention2, rel, tree, word_list, geo_dict, names):
+    def __init__(self, mention1, mention2, rel, tree, word_list, pos_list, geo_dict, names):
         self.mention1 = mention1
         self.mention2 = mention2
         self.rel = rel
         self.tree = tree
         self.word_list = word_list
         self.mid_words = word_list[mention1.span[1]: mention2.span[0]]
+        self.mid_poss = pos_list[mention1.span[1]: mention2.span[0]]
         # self.headed_tree = self.get_heads()
         self.features = self.get_features(geo_dict, names)
 
@@ -242,11 +243,12 @@ class MentionPair:
                     "coin", "writ", "wrote", "invent", "manufactur", "generat", "produc", "foster", "fabricat"}
 
         # some relative trigger verbs between mentions
-        for word in self.mid_words:
-            for trigger in triggers:
-                if trigger in word.lower():
-                    features["CREATE"] = True
-                    break
+        for i, word in enumerate(self.mid_words):
+            if self.mid_poss[i].startswith("VB"):
+                for trigger in triggers:
+                    if trigger in word.lower():
+                        features["CREATE"] = True
+                        break
 
         if features["CREATE"]:
             ents = features["ET12"].split()
@@ -261,16 +263,17 @@ class MentionPair:
         features["OWNBY"] = "None"
         features["BYOWN"] = "None"
 
-        triggers = {"found", "run", "ran", "own", "consume", "buil", "manage", "support", "control",
+        triggers = {"found", "run", "ran", "start", "own", "use", "consume", "buil", "manage", "support", "control",
                     "acquir", "buy", "bought", "possess", "lead", "led", "govern", "oversee", "supervise", "administer",
                     "utiliz", "direct"}
 
         # some relative trigger verbs between mentions
-        for word in self.mid_words:
-            for trigger in triggers:
-                if trigger in word.lower():
-                    features["OWN"] = True
-                    break
+        for i, word in enumerate(self.mid_words):
+            if self.mid_poss[i].startswith("VB"):
+                for trigger in triggers:
+                    if trigger in word.lower():
+                        features["OWN"] = True
+                        break
 
         if features["OWN"]:
             ents = features["ET12"].split()
