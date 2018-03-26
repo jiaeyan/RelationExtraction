@@ -136,7 +136,7 @@ class MentionPair:
         self.check_family(features, geo_dict, names)
 
         # check invent relation
-        # self.check_create(features)
+        self.check_create(features)
 
         # check onwereship relation --> DECREASE PERFORMANCE
         # self.check_own(features)
