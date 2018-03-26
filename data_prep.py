@@ -8,13 +8,18 @@ from features import Mention, MentionPair
 pos_data = "data/postagged-files"
 parse_data = "data/parsed-files"
 geo_data = "data/CountriesToCities.json"
+last_name_data = "data/names/all_last_names.txt"
+male_first_data = "data/names/male_first_names.txt"
+female_first_data = "data/names/female_first_names.txt"
 
 
 def get_pairs(data):
     pos_dict = get_pos_dict(pos_data)
     parse_dict = get_parse_dict(parse_data)
     geo_dict = get_geo_dict(geo_data)
+    # names = get_name_dict([last_name_data, male_first_data, female_first_data])
     entity_pairs = []
+
     with open(data, 'r') as f:
         for line in f:
             fields = line.strip().split()
@@ -91,6 +96,21 @@ def get_geo_dict(geo_data):
                 geo_dict[det_country_dot] = geo_dict[country]
 
     return geo_dict
+
+
+def get_name_dict(data_files):
+    names = set()
+    for data_file in data_files:
+        read_name_file(data_file, names)
+    return names
+
+
+def read_name_file(data_file, names):
+    with open(data_file, "r") as f:
+        for line in f:
+            name = line.strip().split()[0].title()
+            names.add(name)
+
 
 # pos_dict = get_pos_dict(pos_data)
 # print(pos_dict["APW20001001.2021.0521"][3])

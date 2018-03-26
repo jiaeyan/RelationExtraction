@@ -1,5 +1,4 @@
 from nltk import ParentedTree
-import re
 
 
 class Mention:
@@ -21,20 +20,6 @@ class Mention:
         self.get_words_after(features)
 
         return features
-
-    def clean_word(self, word):
-        # handle case like "Mercer_Bullard"
-        words = word.replace("_", " ")
-
-        # convert case like "CAIRO HAHA" to "Cairo Haha", but make "UK" to "Uk"
-        words = self.titlecase(words) if words.isupper() else words
-        return words
-
-    def titlecase(self, word):
-        return re.sub(r"[A-Za-z]+('[A-Za-z]+)?",
-                        lambda mo: mo.group(0)[0].upper() +
-                                   mo.group(0)[1:].lower(),
-                        word)
 
     def get_head_pos(self, features):
         words = self.word.split(" ")
@@ -58,8 +43,6 @@ class Mention:
         second_w = self.word_list[mention_end + 1] if mention_end < sent_len - 1 else "None"
         features["first_word_after"] = first_w
         features["second_word_after"] = second_w
-
-
 
 
 class MentionPair:
@@ -103,14 +86,17 @@ class MentionPair:
         features["AM1F"] = self.mention2.features["first_word_after"]
         features["AM1S"] = self.mention2.features["second_word_after"]
 
+        # combination of entity types
+        features["ET12"] = self.mention1.entity + " " + self.mention2.entity
+
         # words between mention1 and mention2, features["#WB"]
         self.get_words_between(features)
 
         # geo checking between mentions
         self.check_geo_info(features, geo_dict)
 
-        # combination of entity types
-        features["ET12"] = self.mention1.entity + " " + self.mention2.entity
+        # mention level relation
+        self.get_mention_level(features, geo_dict)
 
         # mention inclusions
         # features["M1>M2"], features["M2>M1"] = self.check_mention_inclusion()
@@ -170,11 +156,6 @@ class MentionPair:
         features["CountryET2"] = "None"
         features["ET1Country"] = "None"
 
-        # if w1 in geo_dict or any([w1 in cities for cities in geo_dict.values()]):
-        #     features["CountryET2"] = self.mention2.entity
-        # elif w2 in geo_dict or any([w2 in cities for cities in geo_dict.values()]):
-        #     features["ET1Country"] = self.mention1.entity
-
         if w1 in geo_dict and w2 in geo_dict[w1]:
             features["GHAS"] = True
         elif w2 in geo_dict and w1 in geo_dict[w2]:
@@ -184,10 +165,25 @@ class MentionPair:
         elif w2 in geo_dict or any([w2 in cities for cities in geo_dict.values()]):
             features["ET1Country"] = self.mention1.entity
 
+    def get_mention_level(self, features, geo_dict):
+        mt1 = self.check_mention_type(self.mention1, geo_dict)
+        mt2 = self.check_mention_type(self.mention2, geo_dict)
+
+        features["ML12"] = mt1 + " " + mt2
+
+    def check_mention_type(self, mention, geo_dict):
+        words = self.clean_word(mention.word, geo_dict).split()
+        pos = mention.pos.split()
+
+        if len(words) == 1 and pos[0].startswith("PRP"):
+            return "PRONOUN"
+        elif words[0].istitle() or words[1].istitle():
+            return "NAME"
+        else:
+            return "NOMIAL"
 
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word
-
 
     def head(self, pos):
         return pos.startswith("N") or pos.startswith("VB") or pos is "IN"
