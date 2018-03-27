@@ -160,7 +160,7 @@ class MentionPair:
         self.get_name_info(features, geo_dict, names)
 
         # check org info
-        self.get_organization_info(features)
+        # self.get_organization_info(features)
 
         # check employment info
         self.get_employ_info(features)
