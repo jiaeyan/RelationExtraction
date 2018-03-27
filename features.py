@@ -1,7 +1,7 @@
 from itertools import product
-
 from nltk import ParentedTree
 from nltk.corpus import wordnet as wn
+
 
 class Mention:
 
@@ -75,7 +75,6 @@ class MentionPair:
         # self.headed_tree = self.get_heads()
         self.features = self.get_features(geo_dict, names)
 
-
     def get_features(self, geo_dict, names):
         features = {}
 
@@ -120,7 +119,7 @@ class MentionPair:
         # features["DR1"] = self.dep[self.mention1.span[0]][2]
         # features["DR2"] = self.dep[self.mention2.span[0]][2]
 	# dep relation 1 & dep relation 2
-        features['DR1DR2'] = self.dep[self.mention1.span[0]][2] + " " + self.dep[self.mention2.span[0]][2]
+     #    features['DR1DR2'] = self.dep[self.mention1.span[0]][2] + " " + self.dep[self.mention2.span[0]][2]
         # decreases performance
 	# features["DR1ET1"] = self.dep[self.mention1.span[0]][2] + " " + self.mention1.entity
         # features["DR2ET2"] = self.dep[self.mention2.span[0]][2] + " " + self.mention2.entity
@@ -140,19 +139,22 @@ class MentionPair:
         self.check_geo_info(features, geo_dict)
 
         # check family relation
-        self.check_family(features, geo_dict, names)
+        # self.check_family(features, geo_dict, names)
 
         # get wordnet information
         # self.get_wordnet_info(features)
 
         # check if words are in the same phrases
-        self.check_shared_phrase(features)
+        # self.check_shared_phrase(features)
 
         # check invent relation --> DECREASE PERFORMANCE
         # self.check_create(features)
 
         # check onwereship relation --> DECREASE PERFORMANCE
         # self.check_own(features)
+
+        # check name info
+        self.get_name_info(features, names)
 
         # mention level relation --> DECREASE PERFORMANCE
         # self.get_mention_level(features, geo_dict)
@@ -177,7 +179,6 @@ class MentionPair:
 
         return features
 
-
     def get_words_pos_between(self, features):
         start = self.mention1.span[1]
         end = self.mention2.span[0] - 1
@@ -189,35 +190,35 @@ class MentionPair:
         features["WBFL"] = "None"
         features["WBNULL"] = False
 
-        # features["PBF"] = "None"
-        # features["PBL"] = "None"
-        # features["PBO"] = "None"
-        # features["PBFL"] = "None"
-        # features["PBNULL"] = False
+        features["PBF"] = "None"
+        features["PBL"] = "None"
+        features["PBO"] = "None"
+        features["PBFL"] = "None"
+        features["PBNULL"] = False
 
         if between_range > 2:
             features["WBF"] = self.word_list[start]
             features["WBL"] = self.word_list[end]
             features["WBO"] = " ".join(self.word_list[start + 1: end])
 
-            # features["PBF"] = self.pos_list[start]
-            # features["PBL"] = self.pos_list[end]
-            # features["PBO"] = " ".join(self.pos_list[start + 1: end])
+            features["PBF"] = self.pos_list[start]
+            features["PBL"] = self.pos_list[end]
+            features["PBO"] = " ".join(self.pos_list[start + 1: end])
 
         elif between_range == 2:
             features["WBF"] = self.word_list[start]
             features["WBL"] = self.word_list[end]
 
-            # features["PBF"] = self.pos_list[start]
-            # features["PBL"] = self.pos_list[end]
+            features["PBF"] = self.pos_list[start]
+            features["PBL"] = self.pos_list[end]
 
         elif between_range == 1:
             features["WBFL"] = self.word_list[start]
-            # features["PBFL"] = self.pos_list[start]
+            features["PBFL"] = self.pos_list[start]
 
         else:
             features["WBNULL"] = True
-            # features["PBNULL"] = True
+            features["PBNULL"] = True
 
     def check_mention_inclusion(self):
         span1 = self.mention1.span
@@ -399,6 +400,24 @@ class MentionPair:
                 for lemma in syn.lemmas():
                     syns.add(lemma.name())
         return syns
+
+    def get_name_info(self, features, names):
+        w1 = self.mention1.word
+        w2 = self.mention2.word
+
+        features["NameET2"] = "None"
+        features["ET1Name"] = "None"
+
+        if w1.istitle():
+            for word in w1.split():
+                if word in names:
+                    features["NameET2"] = self.mention2.entity
+                    break
+        elif w2.istitle():
+            for word in w2.split():
+                if word in names:
+                    features["ET1Name"] = self.mention1.entity
+                    break
 
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word
