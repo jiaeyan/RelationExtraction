@@ -466,7 +466,7 @@ class MentionPair:
                     "chief", "boss", "chair", "supervisor", "governor", "head", "doctor", "professor", "student",
                     "analyst", "journalist", "scientist", "police", "teacher", "assistant", "account", "actor",
                     "agent", "technician", "controller", "specialist", "expert", "driver", "trainer", "instructor",
-                    "operator", "counsellor", "consultant", "adviser", "engineer"}
+                    "operator", "counsellor", "consultant", "adviser", "engineer", "researcher", "intern", "mayor"}
 
         for w in w1:
             for t in triggers:
