@@ -97,7 +97,7 @@ class MentionPair:
         features["BM1F"] = self.mention1.features["first_word_before"]
         features["BM1S"] = self.mention1.features["second_word_before"]
 
-        # first and second pos before mention1
+        # first and second pos before mention1 ---> DECREASE PERFORMANCE
         # features["PBM1F"] = self.mention1.features["first_pos_before"]
         # features["PBM1S"] = self.mention1.features["second_pos_before"]
 
@@ -105,7 +105,7 @@ class MentionPair:
         features["AM1F"] = self.mention2.features["first_word_after"]
         features["AM1S"] = self.mention2.features["second_word_after"]
 
-        # first and second pos after mention2'
+        # first and second pos after mention2' ---> DECREASE PERFORMANCE
         # features["PAM1F"] = self.mention2.features["first_pos_after"]
         # features["PAM1S"] = self.mention2.features["second_pos_after"]
 
@@ -114,14 +114,16 @@ class MentionPair:
         features["ET2"] = self.mention2.entity
         features["ET12"] = self.mention1.entity + " " + self.mention2.entity
 
-        # combinations of dep relations and entity types
-	# decrease performance
+        # combinations of dep relations and entity types ---> DECREASE PERFORMANCE
+        #  decrease performance
         # features["DR1"] = self.dep[self.mention1.span[0]][2]
         # features["DR2"] = self.dep[self.mention2.span[0]][2]
-	# dep relation 1 & dep relation 2
-     #    features['DR1DR2'] = self.dep[self.mention1.span[0]][2] + " " + self.dep[self.mention2.span[0]][2]
-        # decreases performance
-	# features["DR1ET1"] = self.dep[self.mention1.span[0]][2] + " " + self.mention1.entity
+
+        #  dep relation 1 & dep relation 2
+        features['DR1DR2'] = self.dep[self.mention1.span[0]][2] + " " + self.dep[self.mention2.span[0]][2]
+
+        # DECREASE PERFORMANCE
+        # features["DR1ET1"] = self.dep[self.mention1.span[0]][2] + " " + self.mention1.entity
         # features["DR2ET2"] = self.dep[self.mention2.span[0]][2] + " " + self.mention2.entity
 
         # combination of entity type and dependent word ---> DECREASE PERFORMANCE
@@ -138,10 +140,10 @@ class MentionPair:
         # geo checking between mentions
         self.check_geo_info(features, geo_dict)
 
-        # check family relation
+        # check family relation ---> DECREASE PERFORMANCE
         # self.check_family(features, geo_dict, names)
 
-        # get wordnet information
+        # get wordnet information ---> DECREASE PERFORMANCE
         # self.get_wordnet_info(features)
 
         # check if words are in the same phrases
