@@ -482,7 +482,7 @@ class MentionPair:
         word1 = self.mention1.word.replace('(', '').replace(')', '')
         word2 = self.mention2.word.replace('(', '').replace(')', '')
         chunk_words = [word[2] for word in self.chunks]
-        chunk_span = self.chunks[self.chunk_words.index(word1):self.chunk_words.index(word2)+1]
+        chunk_span = self.chunks[chunk_words.index(word1):chunk_words.index(word2)+1]
         id_1, id_2 = chunk_span[0][-2], chunk_span[-1][-2]
 
         features['CPHBNULL'] = False
