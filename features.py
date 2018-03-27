@@ -488,7 +488,10 @@ class MentionPair:
             chunk_span = self.chunks[chunk_words.index(word1):chunk_words.index(word2)+1]
         except IndexError:
             chunk_span = self.chunks[self.mention1.span[0]:self.mention2.span[0] + 1]
-        id_1, id_2 = chunk_span[0][-2], chunk_span[-1][-2]
+        try:
+            id_1, id_2 = chunk_span[0][-2], chunk_span[-1][-2]
+        except IndexError:
+            id_1, id_2 = chunk_span[0][-2], chunk_span[0][-2]
 
         features['CPHBNULL'] = False
         features['CPHBFL'] = False
