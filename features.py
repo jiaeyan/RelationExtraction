@@ -444,14 +444,15 @@ class MentionPair:
     def get_chunk_features(self, features):
         word1 = self.mention1.word.replace('(', '').replace(')', '')
         word2 = self.mention2.word.replace('(', '').replace(')', '')
-        chunk_span = self.chunks[self.chunks.index(word1):self.chunks.index(word2)+1]
+        chunk_words = [word[2] for word in self.chunks]
+        chunk_span = self.chunks[self.chunk_words.index(word1):self.chunk_words.index(word2)+1]
         id_1, id_2 = chunk_span[0][-2], chunk_span[-1][-2]
 
-        features['CPHBNULL'] == False
-        features['CPHBFL'] == False
-        features['CPHBF'] == False
-        features['CPHBL'] == False
-        features['CPHBO'] == False
+        features['CPHBNULL'] = False
+        features['CPHBFL'] = False
+        features['CPHBF'] = False
+        features['CPHBL'] = False
+        features['CPHBO'] = False
 
         chunks_in_between = [word for word in chunk_span[1:-1] if word[-2]!= id_1 and word[-2] != id_2]
         if len(chunks_in_between) == 0:
