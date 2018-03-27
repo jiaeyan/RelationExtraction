@@ -157,10 +157,13 @@ class MentionPair:
         # self.check_own(features)
 
         # check name info
-        self.get_name_info(features, names)
+        self.get_name_info(features, geo_dict, names)
 
         # check org info
-        self.get_organization_info(features, geo_dict, names)
+        self.get_organization_info(features)
+
+        # check employment info
+        self.get_employ_info(features)
 
         # mention level relation --> DECREASE PERFORMANCE
         # self.get_mention_level(features, geo_dict)
@@ -406,7 +409,7 @@ class MentionPair:
                     syns.add(lemma.name())
         return syns
 
-    def get_name_info(self, features, names):
+    def get_name_info(self, features, geo_dict, names):
         w1 = self.mention1.word
         w2 = self.mention2.word
 
@@ -415,16 +418,16 @@ class MentionPair:
 
         if w1.istitle():
             for word in w1.split():
-                if word in names:
+                if word in names and word not in geo_dict:
                     features["NameET2"] = self.mention2.entity
                     break
         elif w2.istitle():
             for word in w2.split():
-                if word in names:
+                if word in names and word not in geo_dict:
                     features["ET1Name"] = self.mention1.entity
                     break
 
-    def get_organization_info(self, features, geo_dict, names):
+    def get_organization_info(self, features):
         w1 = self.omit_stopwords(self.mention1.word)
         w2 = self.omit_stopwords(self.mention2.word)
 
@@ -451,6 +454,30 @@ class MentionPair:
 
         # if features["ORGET2"] != "None" and features["ET1ORG"] != "None":
         #     features["ORGORG"] = features["ET12"]
+
+    def get_employ_info(self, features):
+        w1 = self.omit_stopwords(self.mention1.word)
+        w2 = self.omit_stopwords(self.mention2.word)
+
+        features["EMPET2"] = "None"
+        features["ET1EMP"] = "None"
+
+        triggers = {"lead", "official", "officer", "administrator", "manager", "director", "executive", "president",
+                    "chief", "boss", "chair", "supervisor", "governor", "head", "doctor", "professor", "student",
+                    "analyst", "journalist", "scientist", "police", "teacher", "assistant", "account", "actor",
+                    "agent", "technician", "controller", "specialist", "expert", "driver", "trainer", "instructor",
+                    "operator", "counsellor", "consultant", "adviser", "engineer"}
+
+        for w in w1:
+            for t in triggers:
+                if t in w or t.title() in w:
+                    features["EMPET2"] = self.mention2.entity
+                    break
+        for w in w2:
+            for t in triggers:
+                if t in w or t.title() in w:
+                    features["ET1EMP"] = self.mention1.entity
+                    break
 
     def omit_stopwords(self, word):
         words = word.split()
