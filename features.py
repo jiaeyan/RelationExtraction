@@ -492,8 +492,11 @@ class MentionPair:
         chunk_words = [word.split()[-1] if len(word.split()) > 1 else word for word in chunk_words]
         try:
             chunk_span = self.chunks[chunk_words.index(word1):chunk_words.index(word2)+1]
-        except IndexError:
-            chunk_span = self.chunks[self.mention1.span[0]:self.mention2.span[0] + 1]
+        except:
+	    try:
+            	chunk_span = self.chunks[self.mention1.span[0]:self.mention2.span[0] + 1]
+	    except:
+		pass	
 
         try:
             id_1, id_2 = chunk_span[0][-2], chunk_span[-1][-2]
@@ -507,5 +510,5 @@ class MentionPair:
                 features['CPHBL'] = chunks_in_between[-1][3]
                 if len(chunks_in_between) > 2:
                     features['CPHBO'] = ' '.join([chunk[3] for chunk in chunks_in_between[1:-1]])
-        except IndexError:
+        except IndexError or ValueError:
             pass
