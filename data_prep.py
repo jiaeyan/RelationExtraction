@@ -116,7 +116,7 @@ def get_chunked_dict(chunked_data):
 
                     chunked_dict[fn[:-4]].append(sent)
                     sent = []
-        return chunked_dict
+    return chunked_dict
 
 def get_geo_dict(geo_data):
     geo_dict = defaultdict(set)

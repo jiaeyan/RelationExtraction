@@ -62,7 +62,7 @@ class Mention:
 
 class MentionPair:
 
-    def __init__(self, mention1, mention2, rel, tree, dep, word_list, pos_list, geo_dict, names):
+    def __init__(self, mention1, mention2, rel, tree, dep, chunks, word_list, pos_list, geo_dict, names):
         self.mention1 = mention1
         self.mention2 = mention2
         self.rel = rel
@@ -73,6 +73,7 @@ class MentionPair:
         self.mid_words = word_list[mention1.span[1]: mention2.span[0]]
         self.mid_poss = pos_list[mention1.span[1]: mention2.span[0]]
         # self.headed_tree = self.get_heads()
+	self.chunks = chunks
         self.features = self.get_features(geo_dict, names)
 
     def get_features(self, geo_dict, names):
