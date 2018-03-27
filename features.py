@@ -116,10 +116,13 @@ class MentionPair:
         features["ET12"] = self.mention1.entity + " " + self.mention2.entity
 
         # combinations of dep relations and entity types
+	# decrease performance
         # features["DR1"] = self.dep[self.mention1.span[0]][2]
         # features["DR2"] = self.dep[self.mention2.span[0]][2]
-        # features['DR1DR2'] = self.dep[self.mention1.span[0]][2] + " " + self.dep[self.mention2.span[0]][2]
-        # features["DR1ET1"] = self.dep[self.mention1.span[0]][2] + " " + self.mention1.entity
+	# dep relation 1 & dep relation 2
+        features['DR1DR2'] = self.dep[self.mention1.span[0]][2] + " " + self.dep[self.mention2.span[0]][2]
+        # decreases performance
+	# features["DR1ET1"] = self.dep[self.mention1.span[0]][2] + " " + self.mention1.entity
         # features["DR2ET2"] = self.dep[self.mention2.span[0]][2] + " " + self.mention2.entity
 
         # combination of entity type and dependent word ---> DECREASE PERFORMANCE
@@ -140,10 +143,10 @@ class MentionPair:
         self.check_family(features, geo_dict, names)
 
         # get wordnet information
-        self.get_wordnet_info(features)
+        # self.get_wordnet_info(features)
 
         # check if words are in the same phrases
-        # self.check_shared_phrase(features)
+        self.check_shared_phrase(features)
 
         # check invent relation --> DECREASE PERFORMANCE
         # self.check_create(features)
