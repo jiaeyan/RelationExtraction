@@ -464,9 +464,9 @@ class MentionPair:
 
         triggers = {"lead", "official", "officer", "administrator", "manager", "director", "executive", "president",
                     "chief", "boss", "chair", "supervisor", "governor", "head", "doctor", "professor", "student",
-                    "analyst", "journalist", "scientist", "police", "teacher", "assistant", "account", "actor",
+                    "analyst", "journalist", "scientist", "police", "teacher", "assistant", "accountant", "actor",
                     "agent", "technician", "controller", "specialist", "expert", "driver", "trainer", "instructor",
-                    "operator", "counsellor", "consultant", "adviser", "engineer", "researcher", "intern", "mayor"}
+                    "operator", "counsellor", "consultant", "adviser", "engineer", "researcher", "mayor"}
 
         for w in w1:
             for t in triggers:
