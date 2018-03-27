@@ -62,7 +62,7 @@ class Mention:
 
 class MentionPair:
 
-    def __init__(self, mention1, mention2, rel, tree, dep, word_list, pos_list, geo_dict, names):
+    def __init__(self, mention1, mention2, rel, tree, dep, chunks, word_list, pos_list, geo_dict, names):
         self.mention1 = mention1
         self.mention2 = mention2
         self.rel = rel
@@ -73,6 +73,7 @@ class MentionPair:
         self.mid_words = word_list[mention1.span[1]: mention2.span[0]]
         self.mid_poss = pos_list[mention1.span[1]: mention2.span[0]]
         # self.headed_tree = self.get_heads()
+        self.chunks = chunks
         self.features = self.get_features(geo_dict, names)
 
     def get_features(self, geo_dict, names):
@@ -178,8 +179,7 @@ class MentionPair:
         # features["modifies"] = str(features['siblings'] == "True" and self.head(self.mention1.pos) and not self.head(self.mention2.pos))
         # features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
 
-        # features["ancestor"] = self.tree[self.mention2.tree_pos] in self.tree[self.mention1.tree_pos].subtrees()
-        # features["descendant"] =
+        self.get_chunk_features(features)
 
 
         return features
@@ -477,3 +477,26 @@ class MentionPair:
         # features['sameVP'] = sameVP
         features['sameNP'] = sameNP
         # features['samePP'] = samePP
+
+    def get_chunk_features(self, features):
+        word1 = self.mention1.word.replace('(', '').replace(')', '')
+        word2 = self.mention2.word.replace('(', '').replace(')', '')
+        chunk_span = self.chunks[self.chunks.index(word1):self.chunks.index(word2)+1]
+        id_1, id_2 = chunk_span[0][-2], chunk_span[-1][-2]
+
+        features['CPHBNULL'] == False
+        features['CPHBFL'] == False
+        features['CPHBF'] == False
+        features['CPHBL'] == False
+        features['CPHBO'] == False
+
+        chunks_in_between = [word for word in chunk_span[1:-1] if word[-2]!= id_1 and word[-2] != id_2]
+        if len(chunks_in_between) == 0:
+            features['CPHBNULL'] = True
+        elif len(chunks_in_between) == 1:
+            features['CPHBFL'] = chunks_in_between[0][3]
+        elif len(chunks_in_between) > 1:
+            features['CPHBF'] = chunks_in_between[0][3]
+            features['CPHBL'] = chunks_in_between[-1][3]
+            if len(chunks_in_between) > 2:
+                features['CPHBO'] = ' '.join([chunk[3] for chunk in chunks_in_between[1:-1]])

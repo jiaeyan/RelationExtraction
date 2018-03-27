@@ -12,12 +12,14 @@ last_name_data = "data/names/all_last_names.txt"
 male_first_data = "data/names/male_first_names.txt"
 female_first_data = "data/names/female_first_names.txt"
 dep_data = 'data/dep-files'
+chunked_data = 'data/chunked-files'
 
 
 def get_pairs(data):
     pos_dict = get_pos_dict(pos_data)
     parse_dict = get_parse_dict(parse_data)
     dep_dict = get_dep_dict(dep_data)
+    chunked_dict = get_chunked_dict(chunked_data)
     geo_dict = get_geo_dict(geo_data)
     names = get_name_dict([last_name_data, male_first_data, female_first_data])
     entity_pairs = []
@@ -29,13 +31,14 @@ def get_pairs(data):
             sent_id = int(fields[2])
             tree = parse_dict[fn][sent_id]
             dep = dep_dict[fn][sent_id]
+            chunks = chunked_dict[fn][sent_id]
             pos_list = [pair[-1] for pair in pos_dict[fn][sent_id]]
             word_list = [pair[0] for pair in pos_dict[fn][sent_id]]
 
             mention1 = wrap_mention(fields, word_list, pos_list, tree, span_id1=3, span_id2=4, word_id=7, ent_id=5)
             mention2 = wrap_mention(fields, word_list, pos_list, tree, span_id1=9, span_id2=10, word_id=13, ent_id=11)
 
-            entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree, dep, word_list, pos_list, geo_dict, names))
+            entity_pairs.append(MentionPair(mention1, mention2, fields[0], tree, dep, chunks, word_list, pos_list, geo_dict, names))
 
     return entity_pairs
 
@@ -96,7 +99,24 @@ def get_dep_dict(dep_data):
                     sent.append((int(line[0]), int(line[6]), line[7]))
     return dep_dict
 
+def get_chunked_dict(chunked_data):
+    fns = os.listdir(chunked_data)
+    chunked_dict = {}
+    for fn in fns:
+        chunked_dict[fn[:-4]] = []
+        with open(os.path.join(chunked_data, fn)) as f:
+            sent = []
+            for line in f:
+                if not line.startswith('#') and line.split():
+                    line = line.split()
+                    # word#, CHUNK, word, head_word, head#, chunk_chain
+                    line = [line[2], line[3], line[5], line[7], line[8], line[9]]
+                    sent.append(line)
+                elif not line.split():
 
+                    chunked_dict[fn[:-4]].append(sent)
+                    sent = []
+    return chunked_dict
 
 def get_geo_dict(geo_data):
     geo_dict = defaultdict(set)

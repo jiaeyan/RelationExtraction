@@ -1,0 +1,106 @@
+#arguments: IOB tag: Begin, word numbering: file
+#columns: file_id sent_id word_id iob_inner pos word function heads head_ids iob_chain trace-function trace-type trace-head_ids
+    1  1  0 B-NP    CD    APW20001102.1223.0376 NOFUNC          STORY             2 B-NP/B-NP
+    1  1  1 I-NP    NN    NEWS            NOFUNC          STORY             2 I-NP/I-NP
+    1  1  2 I-NP    NN    STORY           NP              13:27:23          4 I-NP/I-NP
+    1  1  3 B-NP    CD    2000-11-02      NOFUNC          13:27:23          4 I-NP
+    1  1  4 I-NP    CD    13:27:23        NP              13:27:23          4 I-NP
+
+    1  2  5 B-NP    NN    Israel-Explosion NP              Israel-Explosion   5 B-NP
+
+    1  3  6 B-NP    NN    Explosion       NOFUNC          Rocks             7 B-NP/B-NP
+    1  3  7 I-NP    NNS   Rocks           NP              Market            9 I-NP/I-NP
+    1  3  8 B-NP    NNP   Jerusalem       NOFUNC          Market            9 I-NP
+    1  3  9 I-NP    NNP   Market          NP              Market            9 I-NP
+
+    1  4 10 B-NP    NNP   JERUSALEM       NP              _                14 B-S/B-S/B-NP/B-NP
+    1  4 11 O       (     (               NOFUNC          ???             ???        I-S/I-S/I-NP/B-PRN
+    1  4 12 B-NP    NNP   AP              NP              ???             ???        I-S/I-S/I-NP/I-PRN/B-NP
+    1  4 13 O       )     )               NOFUNC          ???             ???        I-S/I-S/I-NP/I-PRN
+    1  4 14 B-VP    VBD   _               VP/S            _                14 I-S/I-S/B-VP
+    1  4 15 B-NP    DT    A               NOFUNC          bomb             17 I-S/I-S/I-VP/B-SBAR/B-S/B-NP
+    1  4 16 I-NP    NN    car             NOFUNC          bomb             17 I-S/I-S/I-VP/I-SBAR/I-S/I-NP
+    1  4 17 I-NP    NN    bomb            NP              exploded         18 I-S/I-S/I-VP/I-SBAR/I-S/I-NP
+    1  4 18 B-VP    VBD   exploded        VP/S/SBAR       _                14 I-S/I-S/I-VP/I-SBAR/I-S/B-VP
+    1  4 19 B-NP    NNP   Thursday        NP              exploded         18 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/B-NP
+    1  4 20 B-PP    IN    in              PP              exploded         18 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/B-PP
+    1  4 21 B-NP    DT    a               NOFUNC          market           24 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/I-PP/B-NP/B-NP
+    1  4 22 I-NP    JJ    crowded         NOFUNC          market           24 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/I-PP/I-NP/I-NP
+    1  4 23 I-NP    JJ    outdoor         NOFUNC          market           24 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/I-PP/I-NP/I-NP
+    1  4 24 I-NP    NN    market          NP              in               20 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/I-PP/I-NP/I-NP
+    1  4 25 B-PP    IN    in              PP              market           24 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/I-PP/I-NP/B-PP
+    1  4 26 B-NP    DT    the             NOFUNC          heart            27 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/I-PP/I-NP/I-PP/B-NP/B-NP
+    1  4 27 I-NP    NN    heart           NP              in               25 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/I-PP/I-NP/I-PP/I-NP/I-NP
+    1  4 28 B-PP    IN    of              PP              heart            27 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/I-PP/I-NP/I-PP/I-NP/B-PP
+    1  4 29 B-NP    NNP   Jerusalem       NP              of               28 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/I-PP/I-NP/I-PP/I-NP/I-PP/B-NP
+    1  4 30 O       COMMA COMMA           NOFUNC          exploded         18 I-S/I-S/I-VP/I-SBAR/I-S/I-VP
+    1  4 31 B-VP    VBG   killing         VP/S            exploded         18 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/B-S/B-VP
+    1  4 32 B-NP    IN    at              NOFUNC          people           35 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/I-S/I-VP/B-NP
+    1  4 33 I-NP    JJS   least           NOFUNC          people           35 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/I-S/I-VP/I-NP
+    1  4 34 I-NP    CD    two             NOFUNC          people           35 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/I-S/I-VP/I-NP
+    1  4 35 I-NP    NNS   people          NP              killing          31 I-S/I-S/I-VP/I-SBAR/I-S/I-VP/I-S/I-VP/I-NP
+    1  4 36 O       COMMA COMMA           NOFUNC          _                14 I-S
+    1  4 37 B-NP    NNS   police          NP              _                14 I-S/B-NP
+    1  4 38 B-VP    VBD   said            VP              _                14 I-S/B-VP
+    1  4 39 O       .     .               NOFUNC          _                14 I-S
+
+    1  5 40 B-NP    NNS   Ambulances      NP              raced            41 B-S/B-NP
+    1  5 41 B-VP    VBD   raced           VP/S            raced            41 I-S/B-VP
+    1  5 42 B-PP    TO    to              PP              raced            41 I-S/I-VP/B-PP
+    1  5 43 B-NP    DT    the             NOFUNC          market           46 I-S/I-VP/I-PP/B-NP/B-NP
+    1  5 44 I-NP    NNP   Mahane          NOFUNC          market           46 I-S/I-VP/I-PP/I-NP/I-NP
+    1  5 45 I-NP    NNP   Yehuda          NOFUNC          market           46 I-S/I-VP/I-PP/I-NP/I-NP
+    1  5 46 I-NP    NN    market          NP              to               42 I-S/I-VP/I-PP/I-NP/I-NP
+    1  5 47 O       COMMA COMMA           NOFUNC          market           46 I-S/I-VP/I-PP/I-NP
+    1  5 48 B-NP    WDT   which           WHNP/SBAR       market           46 I-S/I-VP/I-PP/I-NP/B-SBAR/B-WHNP
+    1  5 49 B-VP    VBZ   sells           VP/S            which            48 I-S/I-VP/I-PP/I-NP/I-SBAR/B-S/B-VP
+    1  5 50 B-NP    NN    food            NOFUNC          clothing         54 I-S/I-VP/I-PP/I-NP/I-SBAR/I-S/I-VP/B-NP/B-NP
+    1  5 51 I-NP    COMMA COMMA           NOFUNC          clothing         54 I-S/I-VP/I-PP/I-NP/I-SBAR/I-S/I-VP/I-NP/I-NP
+    1  5 52 I-NP    NNS   vegetables      NOFUNC          clothing         54 I-S/I-VP/I-PP/I-NP/I-SBAR/I-S/I-VP/I-NP/I-NP
+    1  5 53 I-NP    CC    and             NOFUNC          clothing         54 I-S/I-VP/I-PP/I-NP/I-SBAR/I-S/I-VP/I-NP/I-NP
+    1  5 54 I-NP    NN    clothing        NP              sells            49 I-S/I-VP/I-PP/I-NP/I-SBAR/I-S/I-VP/I-NP/I-NP
+    1  5 55 B-PP    IN    in              PP              clothing         54 I-S/I-VP/I-PP/I-NP/I-SBAR/I-S/I-VP/I-NP/B-PP
+    1  5 56 B-NP    JJ    Jewish          NOFUNC          Jerusalem        58 I-S/I-VP/I-PP/I-NP/I-SBAR/I-S/I-VP/I-NP/I-PP/B-NP
+    1  5 57 I-NP    JJ    west            NOFUNC          Jerusalem        58 I-S/I-VP/I-PP/I-NP/I-SBAR/I-S/I-VP/I-NP/I-PP/I-NP
+    1  5 58 I-NP    NNP   Jerusalem       NP              in               55 I-S/I-VP/I-PP/I-NP/I-SBAR/I-S/I-VP/I-NP/I-PP/I-NP
+    1  5 59 O       .     .               NOFUNC          raced            41 I-S
+
+    1  6 60 B-NP    JJ    Huge            NOFUNC          plumes           61 B-S/B-NP/B-NP
+    1  6 61 I-NP    NNS   plumes          NP              rose             65 I-S/I-NP/I-NP
+    1  6 62 B-PP    IN    of              PP              plumes           61 I-S/I-NP/B-PP
+    1  6 63 B-NP    JJ    black           NOFUNC          smoke            64 I-S/I-NP/I-PP/B-NP
+    1  6 64 I-NP    NN    smoke           NP              of               62 I-S/I-NP/I-PP/I-NP
+    1  6 65 B-VP    VBD   rose            VP/S            rose             65 I-S/B-VP
+    1  6 66 B-PP    IN    into            PP              rose             65 I-S/I-VP/B-PP
+    1  6 67 B-NP    DT    the             NOFUNC          sky              68 I-S/I-VP/I-PP/B-NP
+    1  6 68 I-NP    NN    sky             NP              into             66 I-S/I-VP/I-PP/I-NP
+    1  6 69 O       .     .               NOFUNC          rose             65 I-S
+
+    1  7 70 B-NP    DT    The             NOFUNC          blast            71 B-S/B-NP
+    1  7 71 I-NP    NN    blast           NP              came             72 I-S/I-NP
+    1  7 72 B-VP    VBD   came            VP/S            came             72 I-S/B-VP
+    1  7 73 B-SBAR  RB    shortly         NOFUNC          before           74 I-S/I-VP/B-SBAR
+    1  7 74 I-SBAR  IN    before          SBAR            came             72 I-S/I-VP/I-SBAR
+    1  7 75 B-NP    NNP   Israeli         NOFUNC          Arafat           84 I-S/I-VP/I-SBAR/B-S/B-NP
+    1  7 76 I-NP    NNP   Prime           NOFUNC          Arafat           84 I-S/I-VP/I-SBAR/I-S/I-NP
+    1  7 77 I-NP    NNP   Minister        NOFUNC          Arafat           84 I-S/I-VP/I-SBAR/I-S/I-NP
+    1  7 78 I-NP    NNP   Ehud            NOFUNC          Arafat           84 I-S/I-VP/I-SBAR/I-S/I-NP
+    1  7 79 I-NP    NNP   Barak           NOFUNC          Arafat           84 I-S/I-VP/I-SBAR/I-S/I-NP
+    1  7 80 I-NP    CC    and             NOFUNC          Arafat           84 I-S/I-VP/I-SBAR/I-S/I-NP
+    1  7 81 I-NP    NNP   Palestinian     NOFUNC          Arafat           84 I-S/I-VP/I-SBAR/I-S/I-NP
+    1  7 82 I-NP    NN    leader          NOFUNC          Arafat           84 I-S/I-VP/I-SBAR/I-S/I-NP
+    1  7 83 I-NP    NNP   Yasser          NOFUNC          Arafat           84 I-S/I-VP/I-SBAR/I-S/I-NP
+    1  7 84 I-NP    NNP   Arafat          NP              scheduled        86 I-S/I-VP/I-SBAR/I-S/I-NP
+    1  7 85 B-VP    VBD   were            NOFUNC          scheduled        86 I-S/I-VP/I-SBAR/I-S/B-VP
+    1  7 86 I-VP    VBN   scheduled       VP/S            before           74 I-S/I-VP/I-SBAR/I-S/I-VP
+    1  7 87 B-VP    TO    to              NOFUNC          make             88 I-S/I-VP/I-SBAR/I-S/I-VP/B-S/B-VP
+    1  7 88 I-VP    VB    make            VP/S            scheduled        86 I-S/I-VP/I-SBAR/I-S/I-VP/I-S/I-VP
+    1  7 89 B-NP    JJ    separate        NOFUNC          announcements    90 I-S/I-VP/I-SBAR/I-S/I-VP/I-S/I-VP/B-NP/B-NP
+    1  7 90 I-NP    NNS   announcements   NP              make             88 I-S/I-VP/I-SBAR/I-S/I-VP/I-S/I-VP/I-NP/I-NP
+    1  7 91 B-PP    IN    of              PP              announcements    90 I-S/I-VP/I-SBAR/I-S/I-VP/I-S/I-VP/I-NP/B-PP
+    1  7 92 B-NP    NNS   steps           NP              of               91 I-S/I-VP/I-SBAR/I-S/I-VP/I-S/I-VP/I-NP/I-PP/B-NP/B-NP
+    1  7 93 B-PP    IN    toward          PP              steps            92 I-S/I-VP/I-SBAR/I-S/I-VP/I-S/I-VP/I-NP/I-PP/I-NP/B-PP
+    1  7 94 B-NP    DT    a               NOFUNC          cease-fire       95 I-S/I-VP/I-SBAR/I-S/I-VP/I-S/I-VP/I-NP/I-PP/I-NP/I-PP/B-NP
+    1  7 95 I-NP    NN    cease-fire      NP              toward           93 I-S/I-VP/I-SBAR/I-S/I-VP/I-S/I-VP/I-NP/I-PP/I-NP/I-PP/I-NP
+    1  7 96 O       .     .               NOFUNC          came             72 I-S
+
