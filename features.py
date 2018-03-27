@@ -479,8 +479,8 @@ class MentionPair:
         # features['samePP'] = samePP
 
     def get_chunk_features(self, features):
-        word1 = self.mention1.word.replace('(', '').replace(')', '').replace('``','').split()[-1]
-        word2 = self.mention2.word.replace('(', '').replace(')', '').replace('``','').split()[-1]
+        word1 = self.mention1.word.replace('(', '').replace(')', '').replace('``','').split()[-1].split('\'')[-1]
+        word2 = self.mention2.word.replace('(', '').replace(')', '').replace('``','').split()[-1].split('\'')[-1]
 
         features['CPHBNULL'] = False
         features['CPHBFL'] = False
