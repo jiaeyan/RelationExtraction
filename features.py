@@ -479,12 +479,9 @@ class MentionPair:
         # features['samePP'] = samePP
 
     def get_chunk_features(self, features):
-        word1 = self.mention1.word.replace('(', '').replace(')', '')
-        word2 = self.mention2.word.replace('(', '').replace(')', '')
-        if len(word1.split()) > 1:
-            word1 = word1.split()[-1]
-        if len(word2.split()) > 1:
-            word1 = word2.split()[-1]
+        word1 = self.mention1.word.replace('(', '').replace(')', '').split()[-1]
+        word2 = self.mention2.word.replace('(', '').replace(')', '').split()[-1]
+
         chunk_words = [word[2] for word in self.chunks]
         chunk_words = [word.split()[-1] if len(word.split()) > 1 else word for word in chunk_words]
         chunk_span = self.chunks[chunk_words.index(word1):chunk_words.index(word2)+1]
