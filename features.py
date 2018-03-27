@@ -140,7 +140,7 @@ class MentionPair:
         self.check_family(features, geo_dict, names)
 
         # get wordnet information
-        self.get_wordnet_info(features)
+        # self.get_wordnet_info(features)
 
         # check if words are in the same phrases
         self.check_shared_phrase(features)
