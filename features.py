@@ -145,7 +145,7 @@ class MentionPair:
         # self.get_wordnet_info(features)
 
         # check if words are in the same phrases
-        # self.check_shared_phrase(features)
+        self.check_shared_phrase(features)
 
         # check invent relation --> DECREASE PERFORMANCE
         # self.check_create(features)
