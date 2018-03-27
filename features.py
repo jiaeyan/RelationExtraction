@@ -505,11 +505,6 @@ class MentionPair:
             chunk_span = self.chunks[chunk_words.index(word1):chunk_words.index(word2) + 1]
             # chunk_span = self.chunks[self.mention1.span[0]:self.mention2.span[0] + 1]
             # chunk phrase heads in between
-            features['CPHBNULL'] = False
-            features['CPHBFL'] = False
-            features['CPHBF'] = False
-            features['CPHBL'] = False
-            features['CPHBO'] = False
             chunks_in_between = [word for word in chunk_span[1:-1] if word[-2] != id_1 and word[-2] != id_2]
             if len(chunks_in_between) == 0:
                 features['CPHBNULL'] = True
@@ -520,6 +515,11 @@ class MentionPair:
                 features['CPHBL'] = chunks_in_between[-1][3]
                 if len(chunks_in_between) > 2:
                     features['CPHBO'] = ' '.join([chunk[3] for chunk in chunks_in_between[1:-1]])
+            # chunk previous
+
+
+            # chunk after
+
         except ValueError:
             print(word1,word2, " --- mismatch in tokenization")
 
