@@ -158,6 +158,9 @@ class MentionPair:
         # check name info
         self.get_name_info(features, names)
 
+        # check org info
+        # self.get_organization_info(features, geo_dict, names)
+
         # mention level relation --> DECREASE PERFORMANCE
         # self.get_mention_level(features, geo_dict)
 
@@ -420,6 +423,40 @@ class MentionPair:
                 if word in names:
                     features["ET1Name"] = self.mention1.entity
                     break
+
+    def get_organization_info(self, features, geo_dict, names):
+        w1 = self.omit_stopwords(self.mention1.word)
+        w2 = self.omit_stopwords(self.mention2.word)
+
+        features["ORGET2"] = "None"
+        features["ET1ORG"] = "None"
+        # features["ORGORG"] = "None"
+
+        triggers = {"University", "College", "Association", "Department", "Division", "Bank", "Hospital",
+                    "Union", "Centre", "Center", "Central", "Organization", "Authority", "Agency", "Organisation",
+                    "Institute", "Court", "Assembly", "Commission", "Committee", "Board", "International", "National",
+                    "Inc", "Laboratory", "Lab", "Office", "Company", "Congress", "Microsoft", "Facebook", "Apple", "Uber",
+                    "Linkedin", "Yahoo", "Amazon", "Google", "Ltd", "Corp"}
+
+        for w in w1:
+            for t in triggers:
+                if t in w or t.lower() in w:
+                    features["ORGET2"] = self.mention2.entity
+                    break
+        for w in w2:
+            for t in triggers:
+                if t in w or t.lower() in w:
+                    features["ET1ORG"] = self.mention1.entity
+                    break
+
+        # if features["ORGET2"] != "None" and features["ET1ORG"] != "None":
+        #     features["ORGORG"] = features["ET12"]
+
+    def omit_stopwords(self, word):
+        words = word.split()
+        stopwords = {"of", "and", "the", "on", "for"}
+        neo_word = [w for w in words if w not in stopwords]
+        return neo_word
 
     def clean_word(self, word, geo_dict):
         return word.title() if word.isupper() and word not in geo_dict else word
