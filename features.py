@@ -479,36 +479,30 @@ class MentionPair:
         # features['samePP'] = samePP
 
     def get_chunk_features(self, features):
-        word1 = self.mention1.word.replace('(', '').replace(')', '').replace('``','').split()[-1].split('\'')[-1].split(',')[-1]
-        word2 = self.mention2.word.replace('(', '').replace(')', '').replace('``','').split()[-1].split('\'')[-1].split(',')[-1]
+        word1 = self.mention1.word.replace('(', '').replace(')', '').replace('``','').split(' ')[-1].split('\'')[-1]
+        word2 = self.mention2.word.replace('(', '').replace(')', '').replace('``','').split(' ')[-1].split('\'')[-1]
 
+
+
+        chunk_words = [word[2] for word in self.chunks]
+        chunk_words = [word.split(' ')[-1] if len(word.split(' ')) > 1 else word for word in chunk_words]
+        # chunk_span = self.chunks[chunk_words.index(word1):chunk_words.index(word2)+1]
+        # chunk_span = self.chunks[self.mention1.span[0]:self.mention2.span[0] + 1]
+        id_1, id_2 = chunk_words[chunk_words.index(word1)][-2], chunk_words[chunk_words.index(word2)][-2]
+        ''' chunk phrase heads in between ---> DECREASES PERFORMANCE
         features['CPHBNULL'] = False
         features['CPHBFL'] = False
         features['CPHBF'] = False
         features['CPHBL'] = False
         features['CPHBO'] = False
+        chunks_in_between = [word for word in chunk_span[1:-1] if word[-2] != id_1 and word[-2] != id_2]
+        if len(chunks_in_between) == 0:
+            features['CPHBNULL'] = True
+        elif len(chunks_in_between) == 1:
+            features['CPHBFL'] = chunks_in_between[0][3]
+        elif len(chunks_in_between) > 1:
+            features['CPHBF'] = chunks_in_between[0][3]
+            features['CPHBL'] = chunks_in_between[-1][3]
+            if len(chunks_in_between) > 2:
+                features['CPHBO'] = ' '.join([chunk[3] for chunk in chunks_in_between[1:-1]])'''
 
-        chunk_words = [word[2] for word in self.chunks]
-        chunk_words = [word.split()[-1] if len(word.split()) > 1 else word for word in chunk_words]
-        try:
-            chunk_span = self.chunks[chunk_words.index(word1):chunk_words.index(word2)+1]
-        except:
-	    try:
-            	chunk_span = self.chunks[self.mention1.span[0]:self.mention2.span[0] + 1]
-	    except:
-		pass	
-
-        try:
-            id_1, id_2 = chunk_span[0][-2], chunk_span[-1][-2]
-            chunks_in_between = [word for word in chunk_span[1:-1] if word[-2]!= id_1 and word[-2] != id_2]
-            if len(chunks_in_between) == 0:
-                features['CPHBNULL'] = True
-            elif len(chunks_in_between) == 1:
-                features['CPHBFL'] = chunks_in_between[0][3]
-            elif len(chunks_in_between) > 1:
-                features['CPHBF'] = chunks_in_between[0][3]
-                features['CPHBL'] = chunks_in_between[-1][3]
-                if len(chunks_in_between) > 2:
-                    features['CPHBO'] = ' '.join([chunk[3] for chunk in chunks_in_between[1:-1]])
-        except IndexError or ValueError:
-            pass
