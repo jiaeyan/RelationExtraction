@@ -160,7 +160,7 @@ class MentionPair:
         self.get_name_info(features, names)
 
         # check org info
-        # self.get_organization_info(features, geo_dict, names)
+        self.get_organization_info(features, geo_dict, names)
 
         # mention level relation --> DECREASE PERFORMANCE
         # self.get_mention_level(features, geo_dict)
@@ -179,7 +179,7 @@ class MentionPair:
         # features["modifies"] = str(features['siblings'] == "True" and self.head(self.mention1.pos) and not self.head(self.mention2.pos))
         # features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
 
-        self.get_chunk_features(features)
+        # self.get_chunk_features(features)
 
 
         return features
@@ -436,7 +436,7 @@ class MentionPair:
                     "Union", "Centre", "Center", "Central", "Organization", "Authority", "Agency", "Organisation",
                     "Institute", "Court", "Assembly", "Commission", "Committee", "Board", "International", "National",
                     "Inc", "Laboratory", "Lab", "Office", "Company", "Congress", "Microsoft", "Facebook", "Apple", "Uber",
-                    "Linkedin", "Yahoo", "Amazon", "Google", "Ltd", "Corp"}
+                    "Linkedin", "Yahoo", "Amazon", "Google", "Ltd"}
 
         for w in w1:
             for t in triggers:
