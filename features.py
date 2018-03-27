@@ -73,7 +73,7 @@ class MentionPair:
         self.mid_words = word_list[mention1.span[1]: mention2.span[0]]
         self.mid_poss = pos_list[mention1.span[1]: mention2.span[0]]
         # self.headed_tree = self.get_heads()
-	self.chunks = chunks
+        self.chunks = chunks
         self.features = self.get_features(geo_dict, names)
 
     def get_features(self, geo_dict, names):
@@ -176,7 +176,7 @@ class MentionPair:
         # features["modifies"] = str(features['siblings'] == "True" and self.head(self.mention1.pos) and not self.head(self.mention2.pos))
         # features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
 
-        # self.get_chunk_features(features)
+        self.get_chunk_features(features)
 
 
         return features
@@ -440,3 +440,6 @@ class MentionPair:
         # features['sameVP'] = sameVP
         features['sameNP'] = sameNP
         # features['samePP'] = samePP
+
+    def get_chunk_features(self, features):
+        pass
