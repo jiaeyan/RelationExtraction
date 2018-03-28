@@ -493,12 +493,13 @@ class MentionPair:
             w3 = set(w1 + w2)
 
             fam = {"wife", "husband", "son", "daughter", "father", "mother", "grandfather", "grandmother", "aunt", "uncle",
-                   "brother", "sister", "niece", "nephew", "cousin", "parent", "relative"}
+                   "brother", "sister", "niece", "nephew", "cousin", "parent", "relative", "child", "kid"}
             bus = {"boss", "employer", "employee", "colleague", "teacher", "student", "lawyer", "client",
                    "spokesm", "lead", "administrator", "manager", "director", "executive", "president",
                    "chief", "chair", "supervisor", "governor", "head", "doctor", "professor", "student",
                    "assistant", "accountant", "agent", "controller", "driver", "trainer", "instructor",
-                   "counsellor", "consultant", "adviser"}
+                   "counsellor", "consultant", "adviser", "mentor", "team", "candidate", "secretary",
+                   "surrogate", "representative", "colleague"}
 
             for w in w3:
                 for f in fam:
@@ -509,6 +510,8 @@ class MentionPair:
                     if b in w:
                         features["BUS"] = True
                         break
+                if features["FAM"] is True and features["BUS"] is True:
+                    break
 
     def omit_stopwords(self, word):
         words = word.split()
