@@ -165,6 +165,9 @@ class MentionPair:
         # check employment info
         self.get_employ_info(features)
 
+        # check social info
+        # self.get_social_info(features)
+
         # mention level relation --> DECREASE PERFORMANCE
         # self.get_mention_level(features, geo_dict)
 
@@ -466,7 +469,8 @@ class MentionPair:
                     "chief", "boss", "chair", "supervisor", "governor", "head", "doctor", "professor", "student",
                     "analyst", "journalist", "scientist", "police", "teacher", "assistant", "accountant", "actor",
                     "agent", "technician", "controller", "specialist", "expert", "driver", "trainer", "instructor",
-                    "operator", "counsellor", "consultant", "adviser", "engineer", "researcher", "mayor"}
+                    "operator", "counsellor", "consultant", "adviser", "engineer", "researcher", "mayor",
+                    "CEO", "CTO", "lawyer"}
 
         for w in w1:
             for t in triggers:
@@ -478,6 +482,33 @@ class MentionPair:
                 if t in w or t.title() in w:
                     features["ET1EMP"] = self.mention1.entity
                     break
+
+    def get_social_info(self, features):
+        if features["ET12"] == "PER PER":
+            w1 = self.omit_stopwords(self.mention1.word)
+            w2 = self.omit_stopwords(self.mention2.word)
+            w3 = set(w1 + w2)
+
+            features["FAM"] = False
+            features["BUS"] = False
+
+            fam = {"wife", "husband", "son", "daughter", "father", "mother", "grandfather", "grandmother", "aunt", "uncle",
+                   "brother", "sister", "niece", "nephew", "cousin", "parent", "relative"}
+            bus = {"boss", "employer", "employee", "colleague", "teacher", "student", "lawyer", "client",
+                   "spokesm", "lead", "administrator", "manager", "director", "executive", "president",
+                   "chief", "chair", "supervisor", "governor", "head", "doctor", "professor", "student",
+                   "assistant", "accountant", "agent", "controller", "driver", "trainer", "instructor",
+                   "counsellor", "consultant", "adviser"}
+
+            for w in w3:
+                for f in fam:
+                    if f in w:
+                        features["FAM"] = True
+                        break
+                for b in bus:
+                    if b in w:
+                        features["BUS"] = True
+                        break
 
     def omit_stopwords(self, word):
         words = word.split()
