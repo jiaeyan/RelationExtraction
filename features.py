@@ -470,7 +470,7 @@ class MentionPair:
                     "analyst", "journalist", "scientist", "police", "teacher", "assistant", "accountant", "actor",
                     "agent", "technician", "controller", "specialist", "expert", "driver", "trainer", "instructor",
                     "operator", "counsellor", "consultant", "adviser", "engineer", "researcher", "mayor",
-                    "CEO", "CTO", "lawyer", "representative"}
+                    "CEO", "CTO", "lawyer", "representative", "worker"}
 
         for w in w1:
             for t in triggers:
@@ -494,8 +494,8 @@ class MentionPair:
 
             fam = {"wife", "husband", "son", "daughter", "father", "mother", "grandfather", "grandmother", "aunt", "uncle",
                    "brother", "sister", "niece", "nephew", "cousin", "parent", "relative", "child", "kid"}
-            bus = {"boss", "employer", "employee", "colleague", "teacher", "student", "lawyer", "client",
-                   "spokesm", "lead", "administrator", "manager", "director", "executive", "president",
+            bus = {"boss", "employer", "employee", "colleague", "teacher", "student", "lawyer", "client", "worker",
+                   "spokesm", "lead", "administrator", "manager", "director", "executive", "president", "co-worker"
                    "chief", "chair", "supervisor", "governor", "head", "police", "doctor", "professor", "student",
                    "assistant", "accountant", "agent", "controller", "sponsor", "driver", "trainer", "instructor",
                    "counsellor", "consultant", "adviser", "mentor", "team", "candidate", "secretary",
@@ -503,11 +503,11 @@ class MentionPair:
 
             for w in w3:
                 for f in fam:
-                    if f in w or f.title() in w:
+                    if f in w:
                         features["FAM"] = True
                         break
                 for b in bus:
-                    if b in w or b.title() in w:
+                    if b in w:
                         features["BUS"] = True
                         break
                 if features["FAM"] is True and features["BUS"] is True:
