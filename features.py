@@ -182,7 +182,7 @@ class MentionPair:
         # features["modifies"] = str(features['siblings'] == "True" and self.head(self.mention1.pos) and not self.head(self.mention2.pos))
         # features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
 
-        # self.get_chunk_features(features)
+        self.get_chunk_features(features)
 
 
         return features
@@ -522,17 +522,17 @@ class MentionPair:
         word2 = word2.split(' ')[-1].split('\'')[-1] if 'O\'' not in word2 and '\'s' not in word2 else word2.split(' ')[
             -1]
 
-        features['CPHBNULL'] = False
-        features['CPHBFL'] = False
-        features['CPHBF'] = False
-        features['CPHBL'] = False
-        features['CPHBO'] = False
+        #features['CPHBNULL'] = False
+        #features['CPHBFL'] = False
+        #features['CPHBF'] = False
+        #features['CPHBL'] = False
+        #features['CPHBO'] = False
         try:
             id_1, id_2 = self.chunks[chunk_words.index(word1)][-2], self.chunks[chunk_words.index(word2)][-2]
             chunk_span = self.chunks[chunk_words.index(word1):chunk_words.index(word2) + 1]
             # chunk_span = self.chunks[self.mention1.span[0]:self.mention2.span[0] + 1]
-            # chunk phrase heads in between
-            chunks_in_between = [word for word in chunk_span[1:-1] if word[-2] != id_1 and word[-2] != id_2]
+            # chunk phrase heads in between ---> DECREASES PERFORMANCE
+            '''chunks_in_between = [word for word in chunk_span[1:-1] if word[-2] != id_1 and word[-2] != id_2]
             if len(chunks_in_between) == 0:
                 features['CPHBNULL'] = True
             elif len(chunks_in_between) == 1:
@@ -541,8 +541,14 @@ class MentionPair:
                 features['CPHBF'] = chunks_in_between[0][3]
                 features['CPHBL'] = chunks_in_between[-1][3]
                 if len(chunks_in_between) > 2:
-                    features['CPHBO'] = ' '.join([chunk[3] for chunk in chunks_in_between[1:-1]])
-            # chunk previous
+                    features['CPHBO'] = ' '.join([chunk[3] for chunk in chunks_in_between[1:-1]])'''
+            # phrase chain --> DECREASES PERFORMANCE
+	    chain = []
+	    for word in chunks_in_between:
+	    	if word[1].startswith('B'):
+			chain.append(word[1].split('-')[-1])
+	    features['phrase_chain'] = ' '.join(chain) if chain else 'None'
+	    # chunk previous
 
 
             # chunk after
