@@ -189,6 +189,8 @@ class MentionPair:
 			# linear distance ---> DECREASE PERFORMANCE
         # features['distance'] = abs(self.mention1.span[0] - self.mention2.span[0])
 
+        # self.get_tree_distance(features)
+
         return features
 
     def get_words_pos_between(self, features):
@@ -600,3 +602,46 @@ class MentionPair:
         except ValueError:
             print(word1,word2, " --- mismatch in tokenization")
 
+    def get_tree_distance(self, features):
+        min_tree = self.tree.treeposition_spanning_leaves(self.mention1.span[0], self.mention2.span[0])
+        min_tree = self.tree[min_tree]
+        mention1_tree_pos, mention2_tree_pos = self.mention1.tree_pos, self.mention2.tree_pos
+        m1_found, m2_found = False, False
+        try:
+            depth = min_tree.height()
+        except AttributeError:
+            m1_found, m2_found, depth = True, True, -1
+        total_distance = 0
+        tree_path1 = []
+        tree_path2 = []
+        tree_path = []
+        while (not m1_found and not m2_found) or depth > 0:
+            depth -= 1
+            for tree in min_tree.subtrees(lambda t: t.height() == depth):
+                if tree.treeposition() == mention1_tree_pos:
+                    m1_found = True
+                    total_distance += min_tree.height() - depth
+                    curr_tree = tree
+                    while curr_tree != min_tree.parent():
+                        tree_path1.append(curr_tree.label())
+                        curr_tree = curr_tree.parent()
+                if tree.treeposition() == mention2_tree_pos:
+                    m2_found = True
+                    total_distance += min_tree.height() - depth
+                    curr_tree = tree
+                    while curr_tree != min_tree.parent():
+                        tree_path2.append(curr_tree.label())
+                        curr_tree = curr_tree.parent()
+                if m1_found and m2_found:
+                    tree_path2 = tree_path2[::-1][1:]
+                    tree_path = tree_path1+tree_path2
+                    new_path = list()
+                    new_path.append(tree_path[0])
+                    for label in range(1, len(tree_path)):
+                        if tree_path[label] != tree_path[label-1]:
+                            new_path.append(tree_path[label])
+                    tree_path = new_path
+                    break
+
+        features['tree_distance'] = total_distance
+        features['tree_path_const'] = ' '.join(tree_path) if ' '.join(tree_path) != [] else 'None'
