@@ -185,7 +185,7 @@ class MentionPair:
         # features["modifies"] = str(features['siblings'] == "True" and self.head(self.mention1.pos) and not self.head(self.mention2.pos))
         # features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
 
-        #self.get_chunk_features(features)
+        # self.get_chunk_features(features)
 
 
         return features
@@ -583,14 +583,14 @@ class MentionPair:
                 if word[1].startswith('B'):
                 chain.append(word[1].split('-')[-1])
             features['phrase_chain'] = ' '.join(chain) if chain else 'None'"""
-            # chunk previous
+            '''chunk previous --> DECREASES PERFORMANCE
             features['pre_chunk1'] = "None"
             features['pre_chunk2'] = "None"
             pre_chunk = self.chunks[:chunk_words.index(word1)]
             if len(pre_chunk) > 0:
                 features['pre_chunk1'] = pre_chunk[0][2]
             if len(pre_chunk) > 1:
-                features['pre_chunk2'] = pre_chunk[1][2]
+                features['pre_chunk2'] = pre_chunk[1][2]'''
 
             # chunk after
 
