@@ -166,7 +166,7 @@ class MentionPair:
         self.get_employ_info(features)
 
         # check social info
-        # self.get_social_info(features)
+        self.get_social_info(features)
 
         # mention level relation --> DECREASE PERFORMANCE
         # self.get_mention_level(features, geo_dict)
@@ -484,13 +484,13 @@ class MentionPair:
                     break
 
     def get_social_info(self, features):
+        features["FAM"] = False
+        features["BUS"] = False
+
         if features["ET12"] == "PER PER":
             w1 = self.omit_stopwords(self.mention1.word)
             w2 = self.omit_stopwords(self.mention2.word)
             w3 = set(w1 + w2)
-
-            features["FAM"] = False
-            features["BUS"] = False
 
             fam = {"wife", "husband", "son", "daughter", "father", "mother", "grandfather", "grandmother", "aunt", "uncle",
                    "brother", "sister", "niece", "nephew", "cousin", "parent", "relative"}
