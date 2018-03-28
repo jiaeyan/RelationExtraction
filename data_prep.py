@@ -99,6 +99,7 @@ def get_dep_dict(dep_data):
                     sent.append((int(line[0]), int(line[6]), line[7]))
     return dep_dict
 
+
 def get_chunked_dict(chunked_data):
     fns = os.listdir(chunked_data)
     chunked_dict = {}
@@ -117,6 +118,7 @@ def get_chunked_dict(chunked_data):
                     chunked_dict[fn[:-4]].append(sent)
                     sent = []
     return chunked_dict
+
 
 def get_geo_dict(geo_data):
     geo_dict = defaultdict(set)
@@ -167,8 +169,15 @@ def read_name_file(data_file, names):
 #         # ner[fields[11]] += 1
 # print(sorted(ner.items(), key=lambda x: x[1], reverse=True))
 
-# pairs = get_pairs("data/rel-trainset.gold")
+# pairs = get_pairs("data/rel-testset.gold")
 # print(pairs[0].mention2.pos)
+
+# for p in pairs:
+#     if "ORG" in p.rel:
+#         print(p.rel)
+#         print(p.mention1.word)
+#         print(p.mention2.word)
+#         print()
 
 def convert_to_dep(parse_data, dep_data):
     fns = os.listdir(parse_data)

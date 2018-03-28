@@ -1,7 +1,7 @@
 from itertools import product
-from nltk import ParentedTree
 from nltk.corpus import wordnet as wn
 import re
+
 
 class Mention:
 
@@ -72,7 +72,6 @@ class MentionPair:
         self.pos_list = pos_list
         self.mid_words = word_list[mention1.span[1]: mention2.span[0]]
         self.mid_poss = pos_list[mention1.span[1]: mention2.span[0]]
-        # self.headed_tree = self.get_heads()
         self.chunks = chunks
         self.features = self.get_features(geo_dict, names)
 
@@ -141,14 +140,17 @@ class MentionPair:
         # geo checking between mentions
         self.check_geo_info(features, geo_dict)
 
-        # check family relation ---> DECREASE PERFORMANCE
-        # self.check_family(features, geo_dict, names)
-
-        # get wordnet information ---> DECREASE PERFORMANCE
-        # self.get_wordnet_info(features)
-
         # check if words are in the same phrases
         self.check_shared_phrase(features)
+
+        # check name info
+        self.get_name_info(features, geo_dict, names)
+
+        # check employment info
+        self.get_employ_info(features)
+
+        # check social info
+        self.get_social_info(features)
 
         # check invent relation --> DECREASE PERFORMANCE
         # self.check_create(features)
@@ -156,17 +158,14 @@ class MentionPair:
         # check onwereship relation --> DECREASE PERFORMANCE
         # self.check_own(features)
 
-        # check name info
-        self.get_name_info(features, geo_dict, names)
+        # check family relation ---> DECREASE PERFORMANCE
+        # self.check_family(features, geo_dict, names)
 
-        # check org info
+        # get wordnet information ---> DECREASE PERFORMANCE
+        # self.get_wordnet_info(features)
+
+        # check org info ---> DECREASE PERFORMANCE
         # self.get_organization_info(features)
-
-        # check employment info
-        self.get_employ_info(features)
-
-        # check social info
-        self.get_social_info(features)
 
         # mention level relation --> DECREASE PERFORMANCE
         # self.get_mention_level(features, geo_dict)
@@ -186,9 +185,8 @@ class MentionPair:
         # features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
 
         # self.get_chunk_features(features)
-			# linear distance ---> DECREASE PERFORMANCE
+        # linear distance ---> DECREASE PERFORMANCE
         # features['distance'] = abs(self.mention1.span[0] - self.mention2.span[0])
-
         # self.get_tree_distance(features)
 
         return features
