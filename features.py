@@ -186,7 +186,8 @@ class MentionPair:
         # features["depth_diff"] = str(abs(len(self.mention1.tree_pos) - len(self.mention2.tree_pos)))
 
         # self.get_chunk_features(features)
-
+			# linear distance ---> DECREASE PERFORMANCE
+        # features['distance'] = abs(self.mention1.span[0] - self.mention2.span[0])
 
         return features
 
