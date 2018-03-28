@@ -495,7 +495,7 @@ class MentionPair:
             fam = {"wife", "husband", "son", "daughter", "father", "mother", "grandfather", "grandmother", "aunt", "uncle",
                    "brother", "sister", "niece", "nephew", "cousin", "parent", "relative", "child", "kid"}
             bus = {"boss", "employer", "employee", "colleague", "teacher", "student", "lawyer", "client", "worker",
-                   "spokesm", "lead", "administrator", "manager", "director", "executive", "president", "co-worker"
+                   "spokesm", "lead", "administrator", "manager", "director", "executive", "president", "co-worker",
                    "chief", "chair", "supervisor", "governor", "head", "police", "doctor", "professor", "student",
                    "assistant", "accountant", "agent", "controller", "sponsor", "driver", "trainer", "instructor",
                    "counsellor", "consultant", "adviser", "mentor", "team", "candidate", "secretary",
