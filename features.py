@@ -460,29 +460,31 @@ class MentionPair:
         #     features["ORGORG"] = features["ET12"]
 
     def get_employ_info(self, features):
-        w1 = self.omit_stopwords(self.mention1.word)
-        w2 = self.omit_stopwords(self.mention2.word)
-
         features["EMPET2"] = "None"
         features["ET1EMP"] = "None"
 
-        triggers = {"lead", "official", "officer", "administrator", "manager", "director", "executive", "president",
-                    "chief", "boss", "chair", "supervisor", "governor", "head", "doctor", "professor", "student",
-                    "analyst", "journalist", "scientist", "police", "teacher", "assistant", "accountant", "actor",
-                    "agent", "technician", "controller", "specialist", "expert", "driver", "trainer", "instructor",
-                    "operator", "counsellor", "consultant", "adviser", "engineer", "researcher", "mayor",
-                    "CEO", "CTO", "lawyer", "representative", "worker", "co-worker"}
+        if features["ET1"] == "PER" or features["ET2"] == "PER":
 
-        for w in w1:
-            for t in triggers:
-                if t in w or t.title() in w:
-                    features["EMPET2"] = self.mention2.entity
-                    break
-        for w in w2:
-            for t in triggers:
-                if t in w or t.title() in w:
-                    features["ET1EMP"] = self.mention1.entity
-                    break
+            w1 = self.omit_stopwords(self.mention1.word)
+            w2 = self.omit_stopwords(self.mention2.word)
+
+            triggers = {"lead", "official", "officer", "administrator", "manager", "director", "executive", "president",
+                        "chief", "boss", "chair", "supervisor", "governor", "head", "doctor", "professor", "student",
+                        "analyst", "journalist", "scientist", "police", "teacher", "assistant", "accountant", "actor",
+                        "agent", "technician", "controller", "specialist", "expert", "driver", "trainer", "instructor",
+                        "operator", "counsellor", "consultant", "adviser", "engineer", "researcher", "mayor",
+                        "CEO", "CTO", "lawyer", "representative", "worker", "co-worker", "secretary"}
+
+            for w in w1:
+                for t in triggers:
+                    if t in w or t.title() in w:
+                        features["EMPET2"] = self.mention2.entity
+                        break
+            for w in w2:
+                for t in triggers:
+                    if t in w or t.title() in w:
+                        features["ET1EMP"] = self.mention1.entity
+                        break
 
     def get_social_info(self, features):
         features["FAM"] = False
