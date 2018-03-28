@@ -581,7 +581,13 @@ class MentionPair:
                 chain.append(word[1].split('-')[-1])
             features['phrase_chain'] = ' '.join(chain) if chain else 'None'"""
             # chunk previous
-
+            features['pre_chunk1'] = "None"
+            features['pre_chunk2'] = "None"
+            pre_chunk = self.chunks[:chunk_words.index(word1)]
+            if len(pre_chunk) > 0:
+                features['pre_chunk1'] = pre_chunk[0][2]
+            if len(pre_chunk) > 1:
+                features['pre_chunk2'] = pre_chunk[1][2]
 
             # chunk after
 
