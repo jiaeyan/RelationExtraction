@@ -473,7 +473,7 @@ class MentionPair:
                     "analyst", "journalist", "scientist", "police", "teacher", "assistant", "accountant", "actor",
                     "agent", "technician", "controller", "specialist", "expert", "driver", "trainer", "instructor",
                     "operator", "counsellor", "consultant", "adviser", "engineer", "researcher", "mayor",
-                    "CEO", "CTO", "lawyer", "representative", "worker", "co-worker", "secretary"}
+                    "CEO", "CTO", "lawyer", "representative", "worker", "co-worker"}
 
         for w in w1:
             for t in triggers:
