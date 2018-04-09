@@ -1,5 +1,6 @@
 from itertools import product
 from nltk.corpus import wordnet as wn
+from nltk.stem import WordNetLemmatizer
 import re
 
 
@@ -74,6 +75,7 @@ class MentionPair:
         self.mid_poss = pos_list[mention1.span[1]: mention2.span[0]]
         self.chunks = chunks
         self.features = self.get_features(geo_dict, names)
+        self.wnl = WordNetLemmatizer()
 
     def get_features(self, geo_dict, names):
         features = {}
@@ -162,7 +164,7 @@ class MentionPair:
         # self.check_family(features, geo_dict, names)
 
         # get wordnet information ---> DECREASE PERFORMANCE
-        # self.get_wordnet_info(features)
+        self.get_wordnet_info(features)
 
         # check org info ---> DECREASE PERFORMANCE
         # self.get_organization_info(features)
@@ -381,10 +383,11 @@ class MentionPair:
             features["IS"] = True
 
     def wn_get_stem(self, word):
-        for s in wn.synsets(word):
-            for lemma in s.lemmas():
-                return lemma.name()
-        return word
+        return self.wnl.lemmatize(word)
+        # for s in wn.synsets(word):
+        #     for lemma in s.lemmas():
+        #         return lemma.name()
+        # return word
 
     def get_similarity(self, word1, word2):
         synset1 = wn.synsets(word1)
