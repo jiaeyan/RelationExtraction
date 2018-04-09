@@ -74,8 +74,8 @@ class MentionPair:
         self.mid_words = word_list[mention1.span[1]: mention2.span[0]]
         self.mid_poss = pos_list[mention1.span[1]: mention2.span[0]]
         self.chunks = chunks
-        self.features = self.get_features(geo_dict, names)
         self.wnl = WordNetLemmatizer()
+        self.features = self.get_features(geo_dict, names)
 
     def get_features(self, geo_dict, names):
         features = {}
