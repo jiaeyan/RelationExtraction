@@ -164,7 +164,7 @@ class MentionPair:
         # self.check_family(features, geo_dict, names)
 
         # get wordnet information ---> DECREASE PERFORMANCE
-        self.get_wordnet_info(features)
+        # self.get_wordnet_info(features)
 
         # check org info ---> DECREASE PERFORMANCE
         # self.get_organization_info(features)
