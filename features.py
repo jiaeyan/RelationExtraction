@@ -365,22 +365,22 @@ class MentionPair:
         hm1 = self.wn_get_stem(features["HM1"].lower())
         hm2 = self.wn_get_stem(features["HM2"].lower())
 
-        hyper1 = self.get_hypernyms(hm1)
-        hyper2 = self.get_hypernyms(hm2)
+        # hyper1 = self.get_hypernyms(hm1)
+        # hyper2 = self.get_hypernyms(hm2)
         syn1 = self.get_synonyms(hm1)
         syn2 = self.get_synonyms(hm2)
 
-        features["HAS"] = False
-        features["IS"] = False
+        # features["HAS"] = False
+        # features["IS"] = False
         features["SAME"] = False
         # features["SIMILARITY"] = self.get_similarity(hm1, hm2)
 
         if hm1 in syn2 or hm2 in syn1:
             features["SAME"] = True
-        elif hm1 in hyper2:
-            features["HAS"] = True
-        elif hm2 in hyper1:
-            features["IS"] = True
+        # elif hm1 in hyper2:
+        #     features["HAS"] = True
+        # elif hm2 in hyper1:
+        #     features["IS"] = True
 
     def wn_get_stem(self, word):
         return self.wnl.lemmatize(word)
